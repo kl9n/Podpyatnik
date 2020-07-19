@@ -1,0 +1,1 @@
+pyuic5 WMain.ui -o WMain.py

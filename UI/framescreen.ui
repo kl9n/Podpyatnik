@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>670</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>230</width>
+    <height>670</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>650</width>
+    <height>670</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Рама</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>pics/thumbs/frd1.jpg</normaloff>pics/thumbs/frd1.jpg</iconset>
+  </property>
+  <widget class="QLineEdit" name="lineEdit_d0">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>630</y>
+     <width>50</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>4</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_d1_3">
+   <property name="geometry">
+    <rect>
+     <x>145</x>
+     <y>492</y>
+     <width>50</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="maxLength">
+    <number>4</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_d2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>462</y>
+     <width>178</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/D2.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_d1_5">
+   <property name="geometry">
+    <rect>
+     <x>145</x>
+     <y>392</y>
+     <width>50</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>4</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_dg1">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>562</y>
+     <width>178</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/DG1.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_d1_6">
+   <property name="geometry">
+    <rect>
+     <x>145</x>
+     <y>348</y>
+     <width>50</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>4</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_g1">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>600</y>
+     <width>230</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/G1.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_d1_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>412</y>
+     <width>178</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/D1.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_d1_2">
+   <property name="geometry">
+    <rect>
+     <x>145</x>
+     <y>532</y>
+     <width>50</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="maxLength">
+    <number>4</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_ng">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>600</y>
+     <width>230</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/NG.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_d1">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>512</y>
+     <width>178</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/D1.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_dg2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>362</y>
+     <width>178</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/DG2.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bgrnd">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>670</width>
+     <height>671</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/Bgrnd.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_g2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>314</y>
+     <width>178</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pics/frame/G2.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_d1">
+   <property name="geometry">
+    <rect>
+     <x>145</x>
+     <y>582</y>
+     <width>50</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="maxLength">
+    <number>4</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_d1_4">
+   <property name="geometry">
+    <rect>
+     <x>145</x>
+     <y>442</y>
+     <width>50</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>4</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>330</y>
+     <width>411</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Производитель:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_frame">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>380</y>
+     <width>261</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>10</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_variant">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>430</y>
+     <width>41</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>2</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>430</y>
+     <width>102</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вариант №:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>380</y>
+     <width>102</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Рама HxB:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>480</y>
+     <width>391</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="acceptDrops">
+    <bool>true</bool>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+  </widget>
+  <zorder>bgrnd</zorder>
+  <zorder>label_d2</zorder>
+  <zorder>label_dg2</zorder>
+  <zorder>label_g2</zorder>
+  <zorder>label_d1_2</zorder>
+  <zorder>label_d1</zorder>
+  <zorder>label_dg1</zorder>
+  <zorder>label_g1</zorder>
+  <zorder>label_ng</zorder>
+  <zorder>lineEdit_d0</zorder>
+  <zorder>lineEdit_d1_3</zorder>
+  <zorder>lineEdit_d1_5</zorder>
+  <zorder>lineEdit_d1_6</zorder>
+  <zorder>lineEdit_d1_2</zorder>
+  <zorder>lineEdit_d1</zorder>
+  <zorder>lineEdit_d1_4</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>lineEdit_frame</zorder>
+  <zorder>lineEdit_variant</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_8</zorder>
+  <zorder>textEdit</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

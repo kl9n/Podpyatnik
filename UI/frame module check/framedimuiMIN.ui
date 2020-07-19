@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>250</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Отрисовка рам</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="lineEdit_d0">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>642</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bgrnd">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>250</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/Bgrnd.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>0</y>
+      <width>1</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>10</y>
+      <width>531</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Производитель:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>60</y>
+      <width>102</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Вариант №:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_variant">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>60</y>
+      <width>41</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>2</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>280</y>
+      <width>531</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>60</y>
+      <width>102</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Рама HxB:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_frame">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>60</y>
+      <width>261</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>10</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>110</y>
+      <width>131</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Комментарий:</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>140</y>
+      <width>521</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_pp1">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>630</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Назад к подпятникам</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_g1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>635</y>
+      <width>115</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/G1.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>300</y>
+      <width>191</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Добавить элементы:</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>340</y>
+      <width>511</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="1">
+      <widget class="QPushButton" name="pushButton_dg2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>pics/thumbs/frdg2.jpg</normaloff>pics/thumbs/frdg2.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="pushButton_d1">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>pics/thumbs/frd1.jpg</normaloff>pics/thumbs/frd1.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_dg1">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>pics/thumbs/frdg1.jpg</normaloff>pics/thumbs/frdg1.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="pushButton_g2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>pics/thumbs/frg2.jpg</normaloff>pics/thumbs/frg2.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="pushButton_d2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>pics/thumbs/frd2.jpg</normaloff>pics/thumbs/frd2.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QPushButton" name="pushButton_nd">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>120</width>
+         <height>120</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>pics/thumbs/frg1x.jpg</normaloff>pics/thumbs/frg1x.jpg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_dg1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>616</y>
+      <width>89</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/DG1.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_d1">
+    <property name="geometry">
+     <rect>
+      <x>72</x>
+      <y>625</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_ng">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>635</y>
+      <width>115</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/NG.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_d1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>591</y>
+      <width>89</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/D1.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_d2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>566</y>
+      <width>89</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/D2.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_d1_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>541</y>
+      <width>89</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/D1.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_dg2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>516</y>
+      <width>89</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/DG2.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_g2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>492</y>
+      <width>89</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pics/frame/G2.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_d1_2">
+    <property name="geometry">
+     <rect>
+      <x>72</x>
+      <y>600</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_d1_3">
+    <property name="geometry">
+     <rect>
+      <x>72</x>
+      <y>575</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_d1_4">
+    <property name="geometry">
+     <rect>
+      <x>72</x>
+      <y>550</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_d1_5">
+    <property name="geometry">
+     <rect>
+      <x>72</x>
+      <y>525</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_d1_6">
+    <property name="geometry">
+     <rect>
+      <x>72</x>
+      <y>504</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="maxLength">
+     <number>4</number>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_clr">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>630</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Очистить область построения</string>
+    </property>
+   </widget>
+   <zorder>bgrnd</zorder>
+   <zorder>label_ng</zorder>
+   <zorder>label_g1</zorder>
+   <zorder>lineEdit_d0</zorder>
+   <zorder>line</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
+   <zorder>label_4</zorder>
+   <zorder>lineEdit_variant</zorder>
+   <zorder>line_2</zorder>
+   <zorder>label_8</zorder>
+   <zorder>lineEdit_frame</zorder>
+   <zorder>label_9</zorder>
+   <zorder>textEdit</zorder>
+   <zorder>pushButton_pp1</zorder>
+   <zorder>label_10</zorder>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>label_dg1</zorder>
+   <zorder>lineEdit_d1</zorder>
+   <zorder>label_d1</zorder>
+   <zorder>label_d2</zorder>
+   <zorder>label_d1_2</zorder>
+   <zorder>label_dg2</zorder>
+   <zorder>label_g2</zorder>
+   <zorder>lineEdit_d1_2</zorder>
+   <zorder>lineEdit_d1_3</zorder>
+   <zorder>lineEdit_d1_4</zorder>
+   <zorder>lineEdit_d1_5</zorder>
+   <zorder>lineEdit_d1_6</zorder>
+   <zorder>pushButton_clr</zorder>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

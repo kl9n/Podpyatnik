@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Подпятник v0.6</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../pics/main/F-3.jpg</normaloff>../pics/main/F-3.jpg</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>780</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="documentMode">
+     <bool>false</bool>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <property name="tabBarAutoHide">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="tab_1">
+     <attribute name="title">
+      <string>1-2 Отверстия</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>726</width>
+        <height>288</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton_1_2">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/1-2.jpg</normaloff>../pics/thumbs/1-2.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pushButton_R1">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/R-1.jpg</normaloff>../pics/thumbs/R-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="pushButton_2_1">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/2-1.jpg</normaloff>../pics/thumbs/2-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QPushButton" name="pushButton_2_2">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/2-2.jpg</normaloff>../pics/thumbs/2-2.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_1_1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/1-1.jpg</normaloff>../pics/thumbs/1-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton_F1">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/F-1.jpg</normaloff>../pics/thumbs/F-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pushButton_F2">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/F-2.jpg</normaloff>../pics/thumbs/F-2.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="pushButton_F3">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/F-3.jpg</normaloff>../pics/thumbs/F-3.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QPushButton" name="pushButton_F4">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/F-4.jpg</normaloff>../pics/thumbs/F-4.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QPushButton" name="pushButton_R4">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/R-4.jpg</normaloff>../pics/thumbs/R-4.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>3-4 Отверстия</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>726</width>
+        <height>434</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton_3_2">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/3-2.jpg</normaloff>../pics/thumbs/3-2.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QPushButton" name="pushButton_4_2">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/4-2.jpg</normaloff>../pics/thumbs/4-2.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pushButton_3_3">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/3-3.jpg</normaloff>../pics/thumbs/3-3.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="pushButton_3_4">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/3-4.jpg</normaloff>../pics/thumbs/3-4.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_3_1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/3-1.jpg</normaloff>../pics/thumbs/3-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pushButton_R3">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/R-3.jpg</normaloff>../pics/thumbs/R-3.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton_R2">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/R-2.jpg</normaloff>../pics/thumbs/R-2.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QPushButton" name="pushButton_4_3">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/4-3.jpg</normaloff>../pics/thumbs/4-3.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="pushButton_4_1">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/4-1.jpg</normaloff>../pics/thumbs/4-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QPushButton" name="pushButton_F5">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/F-5.jpg</normaloff>../pics/thumbs/F-5.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="pushButton_F6">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/F-6.jpg</normaloff>../pics/thumbs/F-6.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="pushButton_F7">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/F-7.jpg</normaloff>../pics/thumbs/F-7.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>5-9 Отверстий</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>726</width>
+        <height>288</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_5_1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/5-1.jpg</normaloff>../pics/thumbs/5-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton_6_1">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/6-1.jpg</normaloff>../pics/thumbs/6-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pushButton_6_2">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/6-2.jpg</normaloff>../pics/thumbs/6-2.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="pushButton_9_1">
+         <property name="minimumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>140</width>
+           <height>140</height>
+          </size>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../pics/thumbs/9-1.jpg</normaloff>../pics/thumbs/9-1.jpg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>130</width>
+           <height>130</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="4">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

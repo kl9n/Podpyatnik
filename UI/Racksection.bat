@@ -1,0 +1,1 @@
+pyuic5 racksection.ui -o racksection.py

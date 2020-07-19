@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>670</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Секция</string>
+  </property>
+  <widget class="QLabel" name="bgrnd">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>671</width>
+     <height>651</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../pics/levels/Bgrnd.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Beam_1">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>350</y>
+     <width>296</width>
+     <height>56</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../pics/levels/Балка.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_HB">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>345</y>
+     <width>50</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>5</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Rframe_1">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>160</y>
+     <width>20</width>
+     <height>488</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../pics/levels/Рама.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_rackwidth">
+   <property name="geometry">
+    <rect>
+     <x>82</x>
+     <y>130</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>4</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Rframe_2">
+   <property name="geometry">
+    <rect>
+     <x>234</x>
+     <y>160</y>
+     <width>20</width>
+     <height>488</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../pics/levels/Рама.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>130</y>
+     <width>200</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../pics/levels/rscale.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>561</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Производитель:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>60</y>
+     <width>31</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>2</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>60</y>
+     <width>102</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Рама HxB:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>60</y>
+     <width>191</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="maxLength">
+    <number>10</number>
+   </property>
+   <property name="frame">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>102</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вариант №:</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>160</y>
+     <width>321</width>
+     <height>481</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>12</pointsize>
+     <kerning>true</kerning>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+  </widget>
+  <zorder>bgrnd</zorder>
+  <zorder>Rframe_1</zorder>
+  <zorder>label</zorder>
+  <zorder>Rframe_2</zorder>
+  <zorder>Beam_1</zorder>
+  <zorder>lineEdit_HB</zorder>
+  <zorder>lineEdit_rackwidth</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>lineEdit_2</zorder>
+  <zorder>label_8</zorder>
+  <zorder>lineEdit_5</zorder>
+  <zorder>label_4</zorder>
+  <zorder>textEdit</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
