@@ -1085,8 +1085,23 @@ class MainFrameWin(QtWidgets.QMainWindow):
         self.ui.pushButton_prnt.clicked.connect(self.frame_screen)
         self.ui.pushButton_pp1.clicked.connect(self.back_to_main)
         self.ui.pushButton_eqcheck.clicked.connect(self.equal_dim)
+        self.ui.pushButton_sum.clicked.connect(self.make_sum_dim)
 
-    def rebuilt_frame (self):
+    def make_sum_dim(self):
+        self.sum = 0
+        try:
+            for i in range(0, 60):
+                if len(self.ui.lineEdit_d1[i].text()) == 0:
+                    continue
+                else:
+                    self.sum += int(self.ui.lineEdit_d1[i].text())
+
+            self.sum += int(self.ui.lineEdit_d0.text())
+            self.ui.pushButton_sum.setText("Общая сумма\nразмеров:\n\n{}мм".format(self.sum))
+        except:
+            self.ui.pushButton_sum.setText("ОШИБКА\nВВОДА!")
+
+    def rebuilt_frame(self):
         history = self.undoh
         self.undoh = []
         histend = len(history)

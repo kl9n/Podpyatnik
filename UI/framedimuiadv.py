@@ -294,6 +294,23 @@ class Ui_MainWindowFrame(object):
         self.label_2.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName("label_2")
 
+        self.pushButton_sum = QtWidgets.QPushButton(self.gridLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton_canc.sizePolicy().hasHeightForWidth())
+        self.pushButton_sum.setSizePolicy(sizePolicy)
+        self.pushButton_sum.setMinimumSize(QtCore.QSize(120, 120))
+        self.pushButton_sum.setMaximumSize(QtCore.QSize(120, 120))
+        self.pushButton_sum.setSizeIncrement(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.pushButton_sum.setFont(font)
+        self.pushButton_sum.setText("Проверить сумму\nразмеров")
+        self.pushButton_sum.setFlat(True)
+        self.pushButton_sum.setObjectName("../pushButton_sum")
+        self.gridLayout.addWidget(self.pushButton_sum, 1, 1, 1, 1)
+
         self.label_dg1 = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
         self.label_dg2 = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
         self.label_d1 = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
@@ -373,6 +390,7 @@ class Ui_MainWindowFrame(object):
         self.pushButton_eqcheck.raise_()
         self.label.raise_()
         self.label_2.raise_()
+        self.pushButton_sum.raise_()
 
         for i in range(0,30):
 
