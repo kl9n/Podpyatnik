@@ -50,7 +50,7 @@ class Ui_Dialog(object):
         font.setPointSize(12)
         self.lineEdit_rackwidth.setFont(font)
         self.lineEdit_rackwidth.setFocusPolicy(QtCore.Qt.ClickFocus)
-        self.lineEdit_rackwidth.setMaxLength(4)
+        self.lineEdit_rackwidth.setMaxLength(14)
         self.lineEdit_rackwidth.setFrame(False)
         self.lineEdit_rackwidth.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
         self.lineEdit_rackwidth.setObjectName("lineEdit_rackwidth")

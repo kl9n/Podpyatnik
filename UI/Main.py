@@ -685,6 +685,9 @@ class ScrFrWin(QtWidgets.QDialog):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogFRSC()
         self.ui.setupUi(self)
+        self.ui.tit = 'Рама {} {} Вариант: {}'.format(myframeapp.ui.lineEdit.text(),myframeapp.ui.lineEdit_frame.text(),
+                                             myframeapp.ui.lineEdit_variant.text())
+        self.ui.settit(self)
         self.ui.lineEdit.setText(myframeapp.ui.lineEdit.text())
         self.ui.lineEdit_frame.setText(myframeapp.ui.lineEdit_frame.text())
         self.ui.lineEdit_variant.setText(myframeapp.ui.lineEdit_variant.text())

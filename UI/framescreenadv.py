@@ -23,6 +23,7 @@ class Ui_DialogFRSC(object):
         font.setFamily("Arial")
         font.setPointSize(12)
         Dialog.setFont(font)
+        self.tit = "Рама"
         self.lineEdit_d0 = QtWidgets.QLineEdit(Dialog)
         self.lineEdit_d0.setGeometry(QtCore.QRect(160, 630, 50, 20))
         self.lineEdit_d0.setFocusPolicy(QtCore.Qt.ClickFocus)
@@ -213,9 +214,13 @@ class Ui_DialogFRSC(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-    def retranslateUi(self, Dialog):
+    def settit (self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Рама {} {} {}".format(self.lineEdit.text(), self.lineEdit_frame.text(), self.lineEdit_variant.text())))
+        Dialog.setWindowTitle(_translate("Dialog", self.tit))
+
+    def retranslateUi(self, Dialog):
+        self.settit(Dialog)
+        _translate = QtCore.QCoreApplication.translate
         self.label_4.setText(_translate("Dialog", "Производитель:"))
         self.label_5.setText(_translate("Dialog", "Вариант №:"))
         self.label_8.setText(_translate("Dialog", "Рама HxB:"))
