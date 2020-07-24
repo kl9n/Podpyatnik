@@ -1272,6 +1272,7 @@ class MainFrameWin(QtWidgets.QMainWindow):
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap("../pics/thumbs/checkbox/N.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.ui.pushButton_eqcheck.setIcon(icon7)
+        self.ui.pushButton_sum.setText("Проверить сумму\nразмеров")
 
     def disable_firsthor (self):
         if self.firsthor:
