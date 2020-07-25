@@ -27,11 +27,21 @@ from framescreenadv import *
 from racksecscreenadv import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+def get_podpyatniklist():
+    pass
+
+def save_podpyatnik(winclass):
+    winclass.ui.lineEditlist[5].setText(winclass.__class__.__name__)
+
 class W1_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog1_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click())
+
+    def save_on_click(self):
+        save_podpyatnik(self)
 
 class W1_2(QtWidgets.QDialog):
     def __init__(self):
@@ -300,6 +310,8 @@ class MainWin(QtWidgets.QMainWindow):
             global win_list
             w1_1 = W1_1()
             w1_1.show()
+            #w1_1.ui.lineEditlist[5].setText('hhhhhhhhh')
+            #print(w1_1.__class__.__name__)
             win_list.append(w1_1)
 
     def op1_2 (self):
