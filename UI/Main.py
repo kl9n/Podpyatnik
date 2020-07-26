@@ -31,7 +31,7 @@ def get_podpyatnikdict(dict):
     pass
 
 def dictitem_builder(manufacturer,size,type,sizevalues):
-    #TODO проыерить не переписывает ли он сам себя скореевсего будет
+    # проверить не переписывает ли он сам себя скореевсего будет
     variantlist = []
     typedict = {}
     sizedict = {}
