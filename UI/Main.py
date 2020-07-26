@@ -27,21 +27,74 @@ from framescreenadv import *
 from racksecscreenadv import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-def get_podpyatniklist():
+def get_podpyatnikdict(dict):
     pass
 
-def save_podpyatnik(winclass):
-    winclass.ui.lineEditlist[5].setText(winclass.__class__.__name__)
+def dictitem_builder(manufacturer,size,type,sizevalues):
+    #TODO проыерить не переписывает ли он сам себя скореевсего будет
+    variantlist = []
+    typedict = {}
+    sizedict = {}
+    variantlist.append(sizevalues)
+    typedict[type] = variantlist
+    sizedict[size] = typedict
+    podpyatnik_dict[manufacturer] = sizedict
+
+def get_podpyatnik_sizes(list):
+    buffer = []
+    for char in list:
+        spchar = char.split(',')
+        if len(spchar) > 1:
+            char = spchar[0] + '.' + spchar[1]
+        try:
+            buffer.append(float(char))
+        except:
+            continue
+    buffer.sort()
+    x = int(buffer.pop() // 1)
+    y = int(buffer.pop() // 1)
+    sizes = '{}x{}'.format(x, y)
+    return sizes
+
+def save_podpyatnik_to_dict(openedwindow):
+    openedwindow.mainsizevalues = []
+    for i in range(0,len(openedwindow.ui.lineEditlist)):
+        openedwindow.mainsizevalues.append(openedwindow.ui.lineEditlist[i].text())
+    openedwindow.manufacturer = openedwindow.ui.lineEdit_6.text()
+    openedwindow.podpyatniksize = get_podpyatnik_sizes(openedwindow.mainsizevalues)
+    openedwindow.podpyatniktype = openedwindow.__class__.__name__
+    print(openedwindow.mainsizevalues)
+    print(openedwindow.manufacturer)
+    print(openedwindow.podpyatniksize)
+    print(openedwindow.podpyatniktype)
+    try:
+        for ss in podpyatnik_dict[openedwindow.manufacturer][openedwindow.podpyatniksize][openedwindow.podpyatniktype]:
+            if openedwindow.mainsizevalues == ss:
+                break
+            podpyatnik_dict[openedwindow.manufacturer][openedwindow.podpyatniksize][openedwindow.podpyatniktype].append(openedwindow.mainsizevalues)
+    except:
+        dictitem_builder(manufacturer=openedwindow.manufacturer, size=openedwindow.podpyatniksize,type=openedwindow.podpyatniktype,sizevalues=openedwindow.mainsizevalues)
+    print(podpyatnik_dict)
+def save_podpyatnik(openedwindow):
+    save_podpyatnik_to_dict(openedwindow)
+
+def delete_podpyatnik(openedwindow):
+    pass
 
 class W1_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog1_1()
         self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click())
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.saveButton.clicked.connect(self.delete_on_click)
+
 
     def save_on_click(self):
         save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W1_2(QtWidgets.QDialog):
     def __init__(self):
@@ -310,8 +363,6 @@ class MainWin(QtWidgets.QMainWindow):
             global win_list
             w1_1 = W1_1()
             w1_1.show()
-            #w1_1.ui.lineEditlist[5].setText('hhhhhhhhh')
-            #print(w1_1.__class__.__name__)
             win_list.append(w1_1)
 
     def op1_2 (self):
@@ -1520,6 +1571,7 @@ class MainFrameWin(QtWidgets.QMainWindow):
 
 #Конец модуля рам
 #----------------------------------------------------------------------------------------------------------------------
+podpyatnik_dict = {}
 
 win_list = []
 
