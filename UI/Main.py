@@ -30,12 +30,19 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 def get_podpyatnikdict(dict):
     pass
 
+def filelinetailconstructor(manufacturer,size,type,index,sizevalues):
+    buffer = ''
+    for item in sizevalues:
+        buffer += item + '@'
+    buffer = buffer[:-1]
+    flist = '{}|{}|{}|{}|{}\n'.format(manufacturer,size,type,str(index),buffer)
+    return flist
+
 def dictitem_builder(manufacturer,size,type,sizevalues,index=0):
     variantlist = []
     typedict = {}
     sizedict = {}
     variantlist.append(sizevalues)
-
     try:
         podpyatnik_dict[manufacturer][size][type] = variantlist
     except:
@@ -95,8 +102,21 @@ def save_podpyatnik_to_dict(openedwindow):
         print('Еще ничего нет,запускаю билдер')
         dictitem_builder(manufacturer=openedwindow.manufacturer, size=openedwindow.podpyatniksize,type=openedwindow.podpyatniktype,sizevalues=openedwindow.mainsizevalues)
     pprint(podpyatnik_dict)
+
 def save_podpyatnik(openedwindow):
     save_podpyatnik_to_dict(openedwindow)
+    with open(dict_file_path, mode='w', encoding = 'UTF-8') as dictfile:
+        print('Открыли файл ',dict_file_path)
+        for manufacturer in podpyatnik_dict:
+            for size in podpyatnik_dict[manufacturer]:
+                for type in podpyatnik_dict[manufacturer][size]:
+                    i=0
+                    for sizevalues in podpyatnik_dict[manufacturer][size][type]:
+                        print('Дошли до конструктора строки')
+                        line = filelinetailconstructor(manufacturer=manufacturer,size=size,type=type,index=i,sizevalues=sizevalues)
+                        dictfile.write(line)
+                        i+=1
+                        print('Строка {} записана в файл {}'.format(line, dict_file_path))
 
 def delete_podpyatnik(openedwindow):
     pass
@@ -1823,6 +1843,7 @@ class MainFrameWin(QtWidgets.QMainWindow):
 
 #Конец модуля рам
 #----------------------------------------------------------------------------------------------------------------------
+dict_file_path = 'out.txt'
 podpyatnik_dict = {}
 
 win_list = []
