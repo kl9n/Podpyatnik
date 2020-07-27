@@ -27,8 +27,29 @@ from framescreenadv import *
 from racksecscreenadv import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-def get_podpyatnikdict(dict):
-    pass
+def get_podpyatnikdict():
+    try:
+        with open(dict_file_path, mode='r', encoding = 'UTF-8') as dictfile:
+            for line in dictfile:
+                if len(line) > 10:
+                    bufline = line[:-1]
+                    buflist = bufline.split('|')
+                    sizevalues = buflist[4].split('@')
+                    manufacturer = buflist[0]
+                    size = buflist[1]
+                    type = buflist[2]
+                    try:
+                        podpyatnik_dict[manufacturer][size][type].append(sizevalues)
+                    except:
+                        dictitem_builder(manufacturer=manufacturer, size=size, type=type, sizevalues=sizevalues)
+                    print('Загружен словарь из файла: ', dict_file_path)
+                    pprint(podpyatnik_dict)
+                else:
+                    print('Файл словаря пуст')
+                    continue
+    except:
+        #Сделать окно "Ошибка загрузки сохраненных данных"
+        print('Ошибка загрузки словаря, файл отсутствует или поврежден')
 
 def filelinetailconstructor(manufacturer,size,type,index,sizevalues):
     buffer = ''
@@ -1843,8 +1864,9 @@ class MainFrameWin(QtWidgets.QMainWindow):
 
 #Конец модуля рам
 #----------------------------------------------------------------------------------------------------------------------
-dict_file_path = 'out.txt'
+dict_file_path = 'ppdata.ppsf'
 podpyatnik_dict = {}
+get_podpyatnikdict()
 
 win_list = []
 
