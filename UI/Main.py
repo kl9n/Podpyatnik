@@ -30,17 +30,26 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 def get_podpyatnikdict(dict):
     pass
 
-def dictitem_builder(manufacturer,size,type,sizevalues):
-    # проверить не переписывает ли он сам себя скореевсего будет
+def dictitem_builder(manufacturer,size,type,sizevalues,index=0):
     variantlist = []
     typedict = {}
     sizedict = {}
     variantlist.append(sizevalues)
-    typedict[type] = variantlist
-    sizedict[size] = typedict
+
+    try:
+        podpyatnik_dict[manufacturer][size][type] = variantlist
+    except:
+        typedict[type] = variantlist
+
+    try:
+        podpyatnik_dict[manufacturer][size] = typedict
+    except:
+        sizedict[size] = typedict
+
     podpyatnik_dict[manufacturer] = sizedict
 
 def get_podpyatnik_sizes(list):
+    #добавить откусывание названия лайн 6 если оно числовое
     buffer = []
     for char in list:
         spchar = char.split(',')
