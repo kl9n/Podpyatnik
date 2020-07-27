@@ -124,8 +124,7 @@ def save_podpyatnik_to_dict(openedwindow):
         dictitem_builder(manufacturer=openedwindow.manufacturer, size=openedwindow.podpyatniksize,type=openedwindow.podpyatniktype,sizevalues=openedwindow.mainsizevalues)
     pprint(podpyatnik_dict)
 
-def save_podpyatnik(openedwindow):
-    save_podpyatnik_to_dict(openedwindow)
+def save_dict_to_file():
     with open(dict_file_path, mode='w', encoding = 'UTF-8') as dictfile:
         print('Открыли файл ',dict_file_path)
         for manufacturer in podpyatnik_dict:
@@ -152,10 +151,12 @@ class W1_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W1_2(QtWidgets.QDialog):
     def __init__(self):
@@ -166,10 +167,12 @@ class W1_2(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W2_1(QtWidgets.QDialog):
     def __init__(self):
@@ -180,10 +183,12 @@ class W2_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W2_2(QtWidgets.QDialog):
     def __init__(self):
@@ -194,10 +199,12 @@ class W2_2(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W3_1(QtWidgets.QDialog):
     def __init__(self):
@@ -208,10 +215,12 @@ class W3_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W3_2(QtWidgets.QDialog):
     def __init__(self):
@@ -222,10 +231,12 @@ class W3_2(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W3_3(QtWidgets.QDialog):
     def __init__(self):
@@ -236,10 +247,12 @@ class W3_3(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W3_4(QtWidgets.QDialog):
     def __init__(self):
@@ -250,10 +263,12 @@ class W3_4(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W4_1(QtWidgets.QDialog):
     def __init__(self):
@@ -264,10 +279,12 @@ class W4_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W4_2(QtWidgets.QDialog):
     def __init__(self):
@@ -278,10 +295,12 @@ class W4_2(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W4_3(QtWidgets.QDialog):
     def __init__(self):
@@ -292,10 +311,12 @@ class W4_3(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W5_1(QtWidgets.QDialog):
     def __init__(self):
@@ -306,10 +327,12 @@ class W5_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W6_1(QtWidgets.QDialog):
     def __init__(self):
@@ -320,10 +343,12 @@ class W6_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W6_2(QtWidgets.QDialog):
     def __init__(self):
@@ -334,10 +359,12 @@ class W6_2(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class W9_1(QtWidgets.QDialog):
     def __init__(self):
@@ -348,10 +375,12 @@ class W9_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_1(QtWidgets.QDialog):
     def __init__(self):
@@ -362,10 +391,12 @@ class WF_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_2(QtWidgets.QDialog):
     def __init__(self):
@@ -376,10 +407,12 @@ class WF_2(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_3(QtWidgets.QDialog):
     def __init__(self):
@@ -390,10 +423,12 @@ class WF_3(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_4(QtWidgets.QDialog):
     def __init__(self):
@@ -404,10 +439,12 @@ class WF_4(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_5(QtWidgets.QDialog):
     def __init__(self):
@@ -418,10 +455,12 @@ class WF_5(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_6(QtWidgets.QDialog):
     def __init__(self):
@@ -432,10 +471,12 @@ class WF_6(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_7(QtWidgets.QDialog):
     def __init__(self):
@@ -446,10 +487,12 @@ class WF_7(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_8(QtWidgets.QDialog):
     def __init__(self):
@@ -460,10 +503,12 @@ class WF_8(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_9(QtWidgets.QDialog):
     def __init__(self):
@@ -474,10 +519,12 @@ class WF_9(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_10(QtWidgets.QDialog):
     def __init__(self):
@@ -488,10 +535,12 @@ class WF_10(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WF_11(QtWidgets.QDialog):
     def __init__(self):
@@ -502,10 +551,12 @@ class WF_11(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WR_1(QtWidgets.QDialog):
     def __init__(self):
@@ -516,10 +567,12 @@ class WR_1(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WR_2(QtWidgets.QDialog):
     def __init__(self):
@@ -530,10 +583,12 @@ class WR_2(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WR_3(QtWidgets.QDialog):
     def __init__(self):
@@ -544,10 +599,12 @@ class WR_3(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WR_4(QtWidgets.QDialog):
     def __init__(self):
@@ -558,10 +615,12 @@ class WR_4(QtWidgets.QDialog):
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
-        save_podpyatnik(self)
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
 
     def delete_on_click(self):
         delete_podpyatnik(self)
+        save_dict_to_file()
 
 class WDiag_1(QtWidgets.QDialog):
     def __init__(self):
