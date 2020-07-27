@@ -1,4 +1,4 @@
-import sys
+import sys; from pprint import pprint
 from WMain import *; from W1_1 import *
 from W1_2 import *; from W2_1 import *
 from W2_2 import *; from W3_1 import *
@@ -40,55 +40,67 @@ def dictitem_builder(manufacturer,size,type,sizevalues,index=0):
         podpyatnik_dict[manufacturer][size][type] = variantlist
     except:
         typedict[type] = variantlist
-
-    try:
-        podpyatnik_dict[manufacturer][size] = typedict
-    except:
-        sizedict[size] = typedict
-
-    podpyatnik_dict[manufacturer] = sizedict
+        try:
+            podpyatnik_dict[manufacturer][size] = typedict
+        except:
+            sizedict[size] = typedict
+            podpyatnik_dict[manufacturer] = sizedict
 
 def get_podpyatnik_sizes(list):
-    #добавить откусывание названия лайн 6 если оно числовое
     buffer = []
     for char in list:
+        #если в числе стоит запятая, то берет только первую часть до запятой
         spchar = char.split(',')
-        if len(spchar) > 1:
-            char = spchar[0] + '.' + spchar[1]
+        char = spchar[0]
         try:
             buffer.append(float(char))
         except:
             continue
     buffer.sort()
-    x = int(buffer.pop() // 1)
-    y = int(buffer.pop() // 1)
-    sizes = '{}x{}'.format(x, y)
-    return sizes
+    try:
+        x = int(buffer.pop())
+        y = int(buffer.pop())
+        sizes = '{}x{}'.format(x, y)
+        return sizes
+    except:
+        return 'Без размеров'
 
 def save_podpyatnik_to_dict(openedwindow):
     openedwindow.mainsizevalues = []
-    for i in range(0,len(openedwindow.ui.lineEditlist)):
-        openedwindow.mainsizevalues.append(openedwindow.ui.lineEditlist[i].text())
+    if openedwindow.ui.lineEdit_6.text():
+        openedwindow.ui.lineEdit_6.setText(openedwindow.ui.lineEdit_6.text().capitalize())
+        for i in range(0,len(openedwindow.ui.lineEditlist)):
+            openedwindow.mainsizevalues.append(openedwindow.ui.lineEditlist[i].text())
+    else:
+        return
     openedwindow.manufacturer = openedwindow.ui.lineEdit_6.text()
     openedwindow.podpyatniksize = get_podpyatnik_sizes(openedwindow.mainsizevalues)
     openedwindow.podpyatniktype = openedwindow.__class__.__name__
-    print(openedwindow.mainsizevalues)
-    print(openedwindow.manufacturer)
-    print(openedwindow.podpyatniksize)
-    print(openedwindow.podpyatniktype)
+    print('Список размеров - ',openedwindow.mainsizevalues)
+    print('Производитель - ',openedwindow.manufacturer)
+    print('Размер подпятника - ',openedwindow.podpyatniksize)
+    print('Класс окна - ',openedwindow.podpyatniktype)
     try:
         for ss in podpyatnik_dict[openedwindow.manufacturer][openedwindow.podpyatniksize][openedwindow.podpyatniktype]:
             if openedwindow.mainsizevalues == ss:
+                print('Найдены идентичные размеры в вариантах этого типа')
+                is_exist = True
                 break
+            else:
+                is_exist = False
+        if not is_exist:
             podpyatnik_dict[openedwindow.manufacturer][openedwindow.podpyatniksize][openedwindow.podpyatniktype].append(openedwindow.mainsizevalues)
+            print('Добавляем новый вариант имеющегося типа')
     except:
+        print('Еще ничего нет,запускаю билдер')
         dictitem_builder(manufacturer=openedwindow.manufacturer, size=openedwindow.podpyatniksize,type=openedwindow.podpyatniktype,sizevalues=openedwindow.mainsizevalues)
-    print(podpyatnik_dict)
+    pprint(podpyatnik_dict)
 def save_podpyatnik(openedwindow):
     save_podpyatnik_to_dict(openedwindow)
 
 def delete_podpyatnik(openedwindow):
     pass
+
 
 class W1_1(QtWidgets.QDialog):
     def __init__(self):
@@ -96,8 +108,7 @@ class W1_1(QtWidgets.QDialog):
         self.ui = Ui_Dialog1_1()
         self.ui.setupUi(self)
         self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.saveButton.clicked.connect(self.delete_on_click)
-
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
 
     def save_on_click(self):
         save_podpyatnik(self)
@@ -110,174 +121,406 @@ class W1_2(QtWidgets.QDialog):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog1_2()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W2_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog2_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W2_2(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog2_2()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W3_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog3_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W3_2(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog3_2()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W3_3(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog3_3()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W3_4(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog3_4()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W4_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog4_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W4_2(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog4_2()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W4_3(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog4_3()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W5_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog5_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W6_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog6_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W6_2(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog6_2()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class W9_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_Dialog9_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_2(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_2()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_3(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_3()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_4(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_4()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_5(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_5()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_6(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_6()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_7(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_7()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_8(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_8()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_9(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_9()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_10(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_10()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WF_11(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogF_11()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WR_1(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogR_1()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WR_2(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogR_2()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WR_3(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogR_3()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WR_4(QtWidgets.QDialog):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.ui = Ui_DialogR_4()
         self.ui.setupUi(self)
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik(self)
+
+    def delete_on_click(self):
+        delete_podpyatnik(self)
 
 class WDiag_1(QtWidgets.QDialog):
     def __init__(self):
