@@ -59,7 +59,7 @@ def filelinetailconstructor(manufacturer,size,type,index,sizevalues):
     flist = '{}|{}|{}|{}|{}\n'.format(manufacturer,size,type,str(index),buffer)
     return flist
 
-def dictitem_builder(manufacturer,size,type,sizevalues,index=0):
+def dictitem_builder(manufacturer,size,type,sizevalues):
     variantlist = []
     typedict = {}
     sizedict = {}
@@ -103,7 +103,7 @@ def save_podpyatnik_to_dict(openedwindow):
         return
     openedwindow.manufacturer = openedwindow.ui.lineEdit_6.text()
     openedwindow.podpyatniksize = get_podpyatnik_sizes(openedwindow.mainsizevalues)
-    openedwindow.podpyatniktype = openedwindow.__class__.__name__
+    openedwindow.podpyatniktype = openedwindow.ui.__class__.__name__
     print('Список размеров - ',openedwindow.mainsizevalues)
     print('Производитель - ',openedwindow.manufacturer)
     print('Размер подпятника - ',openedwindow.podpyatniksize)
@@ -139,13 +139,26 @@ def save_dict_to_file():
                         print('Строка {} записана в файл {}'.format(line, dict_file_path))
 
 def delete_podpyatnik(openedwindow):
+    # i = 0
+    # for values in podpyatnik_dict[manufacturer][size][type]:
+    #     if values == sizevalues:
+    #         podpyatnik_dict[manufacturer][size][type].pop(i)
+    #         break
+    #     i += 1
+    # if len(podpyatnik_dict[manufacturer][size][type]) < 1:
+    #     podpyatnik_dict[manufacturer][size].pop(type)
+    # if len(podpyatnik_dict[manufacturer][size]) < 1:
+    #     podpyatnik_dict[manufacturer].pop(size)
+    # if len(podpyatnik_dict[manufacturer]) < 1:
+    #     podpyatnik_dict.pop(manufacturer)
+    # print('Удалено')
+    # pprint(podpyatnik_dict)
     pass
 
-
-class W1_1(QtWidgets.QDialog):
-    def __init__(self):
+class ShowPodpyatnik(QtWidgets.QDialog):
+    def __init__(self, ui):
         QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog1_1()
+        self.ui = ui
         self.ui.setupUi(self)
         self.ui.saveButton.clicked.connect(self.save_on_click)
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
@@ -158,510 +171,10 @@ class W1_1(QtWidgets.QDialog):
         delete_podpyatnik(self)
         save_dict_to_file()
 
-class W1_2(QtWidgets.QDialog):
-    def __init__(self):
+class ShowDiagonal(QtWidgets.QDialog):
+    def __init__(self, ui):
         QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog1_2()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W2_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog2_1()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W2_2(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog2_2()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W3_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog3_1()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W3_2(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog3_2()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W3_3(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog3_3()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W3_4(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog3_4()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W4_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog4_1()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W4_2(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog4_2()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W4_3(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog4_3()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W5_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog5_1()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W6_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog6_1()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W6_2(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog6_2()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class W9_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_Dialog9_1()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_1()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_2(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_2()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_3(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_3()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_4(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_4()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_5(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_5()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_6(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_6()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_7(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_7()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_8(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_8()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_9(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_9()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_10(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_10()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WF_11(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogF_11()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WR_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogR_1()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WR_2(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogR_2()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WR_3(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogR_3()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WR_4(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogR_4()
-        self.ui.setupUi(self)
-        self.ui.saveButton.clicked.connect(self.save_on_click)
-        self.ui.deleteButton.clicked.connect(self.delete_on_click)
-
-    def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
-
-    def delete_on_click(self):
-        delete_podpyatnik(self)
-        save_dict_to_file()
-
-class WDiag_1(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogDiag1()
-        self.ui.setupUi(self)
-
-class WDiag_2(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogDiag2()
-        self.ui.setupUi(self)
-
-class WDiag_3(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogDiag3()
-        self.ui.setupUi(self)
-
-class WDiag_4(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogDiag4()
-        self.ui.setupUi(self)
-
-class WDiag_5(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogDiag5()
-        self.ui.setupUi(self)
-
-class WDiag_6(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogDiag6()
-        self.ui.setupUi(self)
-
-class WDiag_7(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogDiag7()
+        self.ui = ui
         self.ui.setupUi(self)
 
 class MainWin(QtWidgets.QMainWindow):
@@ -670,304 +183,59 @@ class MainWin(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         # Кнопки для подпятников
-        self.ui.pushButton_1_1.clicked.connect(self.op1_1)
-        self.ui.pushButton_1_2.clicked.connect(self.op1_2)
-        self.ui.pushButton_2_1.clicked.connect(self.op2_1)
-        self.ui.pushButton_2_2.clicked.connect(self.op2_2)
-        self.ui.pushButton_3_1.clicked.connect(self.op3_1)
-        self.ui.pushButton_3_2.clicked.connect(self.op3_2)
-        self.ui.pushButton_3_3.clicked.connect(self.op3_3)
-        self.ui.pushButton_3_4.clicked.connect(self.op3_4)
-        self.ui.pushButton_4_1.clicked.connect(self.op4_1)
-        self.ui.pushButton_4_2.clicked.connect(self.op4_2)
-        self.ui.pushButton_4_3.clicked.connect(self.op4_3)
-        self.ui.pushButton_5_1.clicked.connect(self.op5_1)
-        self.ui.pushButton_6_1.clicked.connect(self.op6_1)
-        self.ui.pushButton_6_2.clicked.connect(self.op6_2)
-        self.ui.pushButton_9_1.clicked.connect(self.op9_1)
-        self.ui.pushButton_F1.clicked.connect(self.opF_1)
-        self.ui.pushButton_F2.clicked.connect(self.opF_2)
-        self.ui.pushButton_F3.clicked.connect(self.opF_3)
-        self.ui.pushButton_F4.clicked.connect(self.opF_4)
-        self.ui.pushButton_F5.clicked.connect(self.opF_5)
-        self.ui.pushButton_F6.clicked.connect(self.opF_6)
-        self.ui.pushButton_F7.clicked.connect(self.opF_7)
-        self.ui.pushButton_F8.clicked.connect(self.opF_8)
-        self.ui.pushButton_F9.clicked.connect(self.opF_9)
-        self.ui.pushButton_F10.clicked.connect(self.opF_10)
-        self.ui.pushButton_F11.clicked.connect(self.opF_11)
-        self.ui.pushButton_R1.clicked.connect(self.opR_1)
-        self.ui.pushButton_R2.clicked.connect(self.opR_2)
-        self.ui.pushButton_R3.clicked.connect(self.opR_3)
-        self.ui.pushButton_R4.clicked.connect(self.opR_4)
+        self.ui.pushButton_1_1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog1_1'))
+        self.ui.pushButton_1_2.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog1_2'))
+        self.ui.pushButton_2_1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog2_1'))
+        self.ui.pushButton_2_2.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog2_2'))
+        self.ui.pushButton_3_1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog3_1'))
+        self.ui.pushButton_3_2.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog3_2'))
+        self.ui.pushButton_3_3.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog3_3'))
+        self.ui.pushButton_3_4.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog3_4'))
+        self.ui.pushButton_4_1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog4_1'))
+        self.ui.pushButton_4_2.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog4_2'))
+        self.ui.pushButton_4_3.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog4_3'))
+        self.ui.pushButton_5_1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog5_1'))
+        self.ui.pushButton_6_1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog6_1'))
+        self.ui.pushButton_6_2.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog6_2'))
+        self.ui.pushButton_9_1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog9_1'))
+        self.ui.pushButton_F1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_1'))
+        self.ui.pushButton_F2.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_2'))
+        self.ui.pushButton_F3.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_3'))
+        self.ui.pushButton_F4.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_4'))
+        self.ui.pushButton_F5.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_5'))
+        self.ui.pushButton_F6.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_6'))
+        self.ui.pushButton_F7.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_7'))
+        self.ui.pushButton_F8.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_8'))
+        self.ui.pushButton_F9.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_9'))
+        self.ui.pushButton_F10.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_10'))
+        self.ui.pushButton_F11.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogF_11'))
+        self.ui.pushButton_R1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogR_1'))
+        self.ui.pushButton_R2.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogR_2'))
+        self.ui.pushButton_R3.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogR_3'))
+        self.ui.pushButton_R4.clicked.connect(lambda: self.open_podpyatnik_window('Ui_DialogR_4'))
         self.ui.pushButton_lev.clicked.connect(self.oplev)
         self.ui.pushButton_frame.clicked.connect(self.opframe)
-        self.ui.pushButton_diag1.clicked.connect(self.opDiag1)
-        self.ui.pushButton_diag2.clicked.connect(self.opDiag2)
-        self.ui.pushButton_diag3.clicked.connect(self.opDiag3)
-        self.ui.pushButton_diag4.clicked.connect(self.opDiag4)
-        self.ui.pushButton_diag5.clicked.connect(self.opDiag5)
-        self.ui.pushButton_diag6.clicked.connect(self.opDiag6)
-        self.ui.pushButton_diag7.clicked.connect(self.opDiag7)
+        self.ui.pushButton_diag1.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag1'))
+        self.ui.pushButton_diag2.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag2'))
+        self.ui.pushButton_diag3.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag3'))
+        self.ui.pushButton_diag4.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag4'))
+        self.ui.pushButton_diag5.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag5'))
+        self.ui.pushButton_diag6.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag6'))
+        self.ui.pushButton_diag7.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag7'))
 
-    def op1_1 (self):
+    def open_podpyatnik_window(self, ui):
         if __name__ == "__main__":
             global win_list
-            w1_1 = W1_1()
-            w1_1.show()
-            win_list.append(w1_1)
-
-    def op1_2 (self):
-        if __name__ == "__main__":
-            global win_list
-            w1_2 = W1_2()
+            w1_2 = ShowPodpyatnik(ui_type_dict[ui])
             w1_2.show()
             win_list.append(w1_2)
 
-    def op2_1 (self):
+    def open_diagonal_window(self, ui):
         if __name__ == "__main__":
             global win_list
-            w2_1 = W2_1()
-            w2_1.show()
-            win_list.append(w2_1)
-
-    def op2_2 (self):
-        if __name__ == "__main__":
-            global win_list
-            w2_2 = W2_2()
-            w2_2.show()
-            win_list.append(w2_2)
-
-    def op3_1 (self):
-        if __name__ == "__main__":
-            global win_list
-            w3_1 = W3_1()
-            w3_1.show()
-            win_list.append(w3_1)
-
-    def op3_2 (self):
-        if __name__ == "__main__":
-            global win_list
-            w3_2 = W3_2()
-            w3_2.show()
-            win_list.append(w3_2)
-
-    def op3_3 (self):
-        if __name__ == "__main__":
-            global win_list
-            w3_3 = W3_3()
-            w3_3.show()
-            win_list.append(w3_3)
-
-    def op3_4 (self):
-        if __name__ == "__main__":
-            global win_list
-            w3_4 = W3_4()
-            w3_4.show()
-            win_list.append(w3_4)
-
-    def op4_1 (self):
-        if __name__ == "__main__":
-            global win_list
-            w4_1 = W4_1()
-            w4_1.show()
-            win_list.append(w4_1)
-
-    def op4_2 (self):
-        if __name__ == "__main__":
-            global win_list
-            w4_2 = W4_2()
-            w4_2.show()
-            win_list.append(w4_2)
-
-    def op4_3 (self):
-        if __name__ == "__main__":
-            global win_list
-            w4_3 = W4_3()
-            w4_3.show()
-            win_list.append(w4_3)
-
-    def op5_1 (self):
-        if __name__ == "__main__":
-            global win_list
-            w5_1 = W5_1()
-            w5_1.show()
-            win_list.append(w5_1)
-
-    def op6_1 (self):
-        if __name__ == "__main__":
-            global win_list
-            w6_1 = W6_1()
-            w6_1.show()
-            win_list.append(w6_1)
-
-    def op6_2 (self):
-        if __name__ == "__main__":
-            global win_list
-            w6_2 = W6_2()
-            w6_2.show()
-            win_list.append(w6_2)
-
-    def op9_1 (self):
-        if __name__ == "__main__":
-            global win_list
-            w9_1 = W9_1()
-            w9_1.show()
-            win_list.append(w9_1)
-
-    def opF_1 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_1 = WF_1()
-            wF_1.show()
-            win_list.append(wF_1)
-
-    def opF_2 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_2 = WF_2()
-            wF_2.show()
-            win_list.append(wF_2)
-
-    def opF_3 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_3 = WF_3()
-            wF_3.show()
-            win_list.append(wF_3)
-
-    def opF_4 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_4 = WF_4()
-            wF_4.show()
-            win_list.append(wF_4)
-
-    def opF_5 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_5 = WF_5()
-            wF_5.show()
-            win_list.append(wF_5)
-
-    def opF_6 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_6 = WF_6()
-            wF_6.show()
-            win_list.append(wF_6)
-
-    def opF_7 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_7 = WF_7()
-            wF_7.show()
-            win_list.append(wF_7)
-
-    def opF_8 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_8 = WF_8()
-            wF_8.show()
-            win_list.append(wF_8)
-
-    def opF_9 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_9 = WF_9()
-            wF_9.show()
-            win_list.append(wF_9)
-
-    def opF_10 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_10 = WF_10()
-            wF_10.show()
-            win_list.append(wF_10)
-
-    def opF_11 (self):
-        if __name__ == "__main__":
-            global win_list
-            wF_11 = WF_11()
-            wF_11.show()
-            win_list.append(wF_11)
-
-    def opR_1 (self):
-        if __name__ == "__main__":
-            global win_list
-            wR_1 = WR_1()
-            wR_1.show()
-            win_list.append(wR_1)
-
-    def opR_2 (self):
-        if __name__ == "__main__":
-            global win_list
-            wR_2 = WR_2()
-            wR_2.show()
-            win_list.append(wR_2)
-
-    def opR_3 (self):
-        if __name__ == "__main__":
-            global win_list
-            wR_3 = WR_3()
-            wR_3.show()
-            win_list.append(wR_3)
-
-    def opR_4 (self):
-        if __name__ == "__main__":
-            global win_list
-            wR_4 = WR_4()
-            wR_4.show()
-            win_list.append(wR_4)
-
-    def opDiag1 (self):
-        if __name__ == "__main__":
-            global win_list
-            diag1 = WDiag_1()
+            diag1 = ShowDiagonal(ui_type_dict[ui])
             diag1.show()
             win_list.append(diag1)
-
-    def opDiag2(self):
-        if __name__ == "__main__":
-            global win_list
-            diag2 = WDiag_2()
-            diag2.show()
-            win_list.append(diag2)
-
-    def opDiag3(self):
-        if __name__ == "__main__":
-            global win_list
-            diag3 = WDiag_3()
-            diag3.show()
-            win_list.append(diag3)
-
-    def opDiag4 (self):
-        if __name__ == "__main__":
-            global win_list
-            diag4 = WDiag_4()
-            diag4.show()
-            win_list.append(diag4)
-
-    def opDiag5 (self):
-        if __name__ == "__main__":
-            global win_list
-            diag5 = WDiag_5()
-            diag5.show()
-            win_list.append(diag5)
-
-    def opDiag6 (self):
-        if __name__ == "__main__":
-            global win_list
-            diag6 = WDiag_6()
-            diag6.show()
-            win_list.append(diag6)
-
-    def opDiag7 (self):
-        if __name__ == "__main__":
-            global win_list
-            diag7 = WDiag_7()
-            diag7.show()
-            win_list.append(diag7)
 
     def oplev (self):
         if __name__ == "__main__":
@@ -1923,6 +1191,44 @@ class MainFrameWin(QtWidgets.QMainWindow):
 
 #Конец модуля рам
 #----------------------------------------------------------------------------------------------------------------------
+ui_type_dict = {'Ui_Dialog1_1':Ui_Dialog1_1(),
+                'Ui_Dialog1_2':Ui_Dialog1_2(),
+                'Ui_Dialog2_1':Ui_Dialog2_1(),
+                'Ui_Dialog2_2':Ui_Dialog2_2(),
+                'Ui_Dialog3_1':Ui_Dialog3_1(),
+                'Ui_Dialog3_2':Ui_Dialog3_2(),
+                'Ui_Dialog3_3':Ui_Dialog3_3(),
+                'Ui_Dialog3_4':Ui_Dialog3_4(),
+                'Ui_Dialog4_1':Ui_Dialog4_1(),
+                'Ui_Dialog4_2':Ui_Dialog4_2(),
+                'Ui_Dialog4_3':Ui_Dialog4_3(),
+                'Ui_Dialog5_1':Ui_Dialog5_1(),
+                'Ui_Dialog6_1':Ui_Dialog6_1(),
+                'Ui_Dialog6_2':Ui_Dialog6_2(),
+                'Ui_Dialog9_1':Ui_Dialog9_1(),
+                'Ui_DialogF_1':Ui_DialogF_1(),
+                'Ui_DialogF_2':Ui_DialogF_2(),
+                'Ui_DialogF_3':Ui_DialogF_3(),
+                'Ui_DialogF_4':Ui_DialogF_4(),
+                'Ui_DialogF_5':Ui_DialogF_5(),
+                'Ui_DialogF_6':Ui_DialogF_6(),
+                'Ui_DialogF_7':Ui_DialogF_7(),
+                'Ui_DialogF_8':Ui_DialogF_8(),
+                'Ui_DialogF_9':Ui_DialogF_9(),
+                'Ui_DialogF_10':Ui_DialogF_10(),
+                'Ui_DialogF_11':Ui_DialogF_11(),
+                'Ui_DialogR_1':Ui_DialogR_1(),
+                'Ui_DialogR_2':Ui_DialogR_2(),
+                'Ui_DialogR_3':Ui_DialogR_3(),
+                'Ui_DialogR_4':Ui_DialogR_4(),
+                'Ui_DialogDiag1':Ui_DialogDiag1(),
+                'Ui_DialogDiag2':Ui_DialogDiag2(),
+                'Ui_DialogDiag3':Ui_DialogDiag3(),
+                'Ui_DialogDiag4':Ui_DialogDiag4(),
+                'Ui_DialogDiag5':Ui_DialogDiag5(),
+                'Ui_DialogDiag6':Ui_DialogDiag6(),
+                'Ui_DialogDiag7':Ui_DialogDiag7()}
+
 dict_file_path = 'ppdata.ppsf'
 podpyatnik_dict = {}
 get_podpyatnikdict()
