@@ -124,6 +124,7 @@ def save_podpyatnik_to_dict(openedwindow):
         print('Еще ничего нет,запускаю билдер')
         dictitem_builder(manufacturer=openedwindow.manufacturer, size=openedwindow.podpyatniksize,type=openedwindow.podpyatniktype,sizevalues=openedwindow.mainsizevalues)
     pprint(podpyatnik_dict)
+    myapp.get_manufacturers()
 
 def save_dict_to_file():
     with open(dict_file_path, mode='w', encoding = 'UTF-8') as dictfile:
@@ -140,21 +141,21 @@ def save_dict_to_file():
                         print('Строка {} записана в файл {}'.format(line, dict_file_path))
 
 def delete_podpyatnik(openedwindow):
-    # i = 0
-    # for values in podpyatnik_dict[manufacturer][size][type]:
-    #     if values == sizevalues:
-    #         podpyatnik_dict[manufacturer][size][type].pop(i)
-    #         break
-    #     i += 1
-    # if len(podpyatnik_dict[manufacturer][size][type]) < 1:
-    #     podpyatnik_dict[manufacturer][size].pop(type)
-    # if len(podpyatnik_dict[manufacturer][size]) < 1:
-    #     podpyatnik_dict[manufacturer].pop(size)
-    # if len(podpyatnik_dict[manufacturer]) < 1:
-    #     podpyatnik_dict.pop(manufacturer)
-    # print('Удалено')
-    # pprint(podpyatnik_dict)
-    pass
+    i = 0
+    for values in podpyatnik_dict[openedwindow.manufacturer][openedwindow.size][openedwindow.type]:
+        if values == openedwindow.sizevalues:
+            podpyatnik_dict[openedwindow.manufacturer][openedwindow.size][openedwindow.type].pop(i)
+            break
+        i += 1
+    if len(podpyatnik_dict[openedwindow.manufacturer][openedwindow.size][openedwindow.type]) < 1:
+        podpyatnik_dict[openedwindow.manufacturer][openedwindow.size].pop(openedwindow.type)
+    if len(podpyatnik_dict[openedwindow.manufacturer][openedwindow.size]) < 1:
+        podpyatnik_dict[openedwindow.manufacturer].pop(openedwindow.size)
+    if len(podpyatnik_dict[openedwindow.manufacturer]) < 1:
+        podpyatnik_dict.pop(openedwindow.manufacturer)
+    print('Удалено')
+    pprint(podpyatnik_dict)
+    myapp.get_manufacturers()
 
 def show_error_window(title='Ошибка', box='Что-то пошло не так...'):
     if __name__ == "__main__":
@@ -176,8 +177,31 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         QtWidgets.QWidget.__init__(self)
         self.ui = ui
         self.ui.setupUi(self)
+        #Кнопки
+        self.ui.saveButton.clicked.connect(self.save_on_click)
+
+    def save_on_click(self):
+        save_podpyatnik_to_dict(self)
+        save_dict_to_file()
+
+class ShowSavedPodpyatnik(QtWidgets.QDialog):
+    def __init__(self, ui, manufacturer, size, type, sizevalues):
+        QtWidgets.QWidget.__init__(self)
+        self.ui = ui
+        self.ui.setupUi(self)
+        self.manufacturer = manufacturer
+        self.size = size
+        self.type = type
+        self.sizevalues = sizevalues
+        self.ui.deleteButton.show()
+        self.load_data()
+        #Кнопки
         self.ui.saveButton.clicked.connect(self.save_on_click)
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def load_data(self):
+        for i in range(0,len(self.ui.lineEditlist)):
+            self.ui.lineEditlist[i].setText(self.sizevalues[i])
 
     def save_on_click(self):
         save_podpyatnik_to_dict(self)
@@ -198,6 +222,18 @@ class MainWin(QtWidgets.QMainWindow):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.selected_manufacturer = ''
+        self.selected_size = ''
+        self.selected_type = ''
+        self.selected_variant = ''
+        self.selected_sizevalues = []
+        #составляем список производителей из сохронки для модуля отображения
+        self.get_manufacturers()
+        #Комбобоксы для модуля отображения
+        self.ui.manufacturer_comboBox.activated[str].connect(self.get_manufacturer_sizes)
+        self.ui.size_comboBox.activated[str].connect(self.get_manufacturer_sizetypes)
+        self.ui.type_comboBox.activated[str].connect(self.get_variants)
+        self.ui.variant_comboBox.activated[str].connect(self.get_sizevalues)
         # Кнопки для подпятников
         self.ui.pushButton_1_1.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog1_1'))
         self.ui.pushButton_1_2.clicked.connect(lambda: self.open_podpyatnik_window('Ui_Dialog1_2'))
@@ -238,6 +274,73 @@ class MainWin(QtWidgets.QMainWindow):
         self.ui.pushButton_diag5.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag5'))
         self.ui.pushButton_diag6.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag6'))
         self.ui.pushButton_diag7.clicked.connect(lambda: self.open_diagonal_window('Ui_DialogDiag7'))
+
+    def get_manufacturers(self):
+        self.ui.manufacturer_comboBox.clear()
+        self.manufacturerlist = []
+        if len(podpyatnik_dict):
+            for name in podpyatnik_dict:
+                self.manufacturerlist.append(name)
+            self.manufacturerlist.sort()
+            self.ui.manufacturer_comboBox.addItems(self.manufacturerlist)
+            self.ui.manufacturer_comboBox.setEnabled(True)
+            self.ui.size_comboBox.setEnabled(True)
+            self.ui.type_comboBox.setEnabled(True)
+            self.ui.variant_comboBox.setEnabled(True)
+        else:
+            self.ui.manufacturer_comboBox.addItems(['Нет сохранений'])
+            self.ui.manufacturer_comboBox.setEnabled(False)
+            self.ui.size_comboBox.setEnabled(False)
+            self.ui.type_comboBox.setEnabled(False)
+            self.ui.variant_comboBox.setEnabled(False)
+
+    def get_manufacturer_sizes(self):
+        self.selected_manufacturer = self.ui.manufacturer_comboBox.currentText()
+        self.ui.size_comboBox.clear()
+        self.ui.type_comboBox.clear()
+        self.ui.variant_comboBox.clear()
+        self.sizelist = []
+        for size in podpyatnik_dict[self.selected_manufacturer]:
+            self.sizelist.append(size)
+        self.sizelist.sort()
+        self.ui.size_comboBox.addItems(self.sizelist)
+
+    def get_manufacturer_sizetypes(self):
+        self.selected_size = self.ui.size_comboBox.currentText()
+        self.ui.type_comboBox.clear()
+        self.ui.variant_comboBox.clear()
+        self.typelist = []
+        for type in podpyatnik_dict[self.selected_manufacturer][self.selected_size]:
+            self.typelist.append(type)
+        self.typelist.sort()
+        for type in self.typelist:
+            self.ui.type_comboBox.addItem(QtGui.QIcon(ui_type_dict[type][1]), type)
+
+    def get_variants(self):
+        self.selected_type = self.ui.type_comboBox.currentText()
+        self.ui.variant_comboBox.clear()
+        self.variantlist = []
+        self.number_of_variants = len(podpyatnik_dict[self.selected_manufacturer][self.selected_size][self.selected_type])
+        if self.number_of_variants > 1:
+            for i in range(0, self.number_of_variants):
+                self.variantlist.append('{}'.format(i + 1))
+            self.ui.variant_comboBox.addItems(self.variantlist)
+        else:
+            self.selected_sizevalues = podpyatnik_dict[self.selected_manufacturer][self.selected_size][self.selected_type][0]
+            self.open_saved_podpyatnik(self.selected_type)
+
+    def get_sizevalues(self):
+        self.selected_variant = int(self.ui.variant_comboBox.currentText()) - 1
+        self.selected_sizevalues = podpyatnik_dict[self.selected_manufacturer][self.selected_size][self.selected_type][self.selected_variant]
+        self.open_saved_podpyatnik(self.selected_type)
+
+    def open_saved_podpyatnik(self, ui):
+        if __name__ == "__main__":
+            global win_list
+            ppswin = ShowSavedPodpyatnik(ui=ui_type_dict[ui][0], manufacturer=self.selected_manufacturer
+                                        , size=self.selected_size, type=self.selected_type, sizevalues=self.selected_sizevalues)
+            ppswin.show()
+            win_list.append(ppswin)
 
     def open_podpyatnik_window(self, ui):
         if __name__ == "__main__":
