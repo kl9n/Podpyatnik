@@ -242,14 +242,14 @@ class MainWin(QtWidgets.QMainWindow):
     def open_podpyatnik_window(self, ui):
         if __name__ == "__main__":
             global win_list
-            ppwin = ShowPodpyatnik(ui_type_dict[ui])
+            ppwin = ShowPodpyatnik(ui_type_dict[ui][0])
             ppwin.show()
             win_list.append(ppwin)
 
     def open_diagonal_window(self, ui):
         if __name__ == "__main__":
             global win_list
-            diagwin = ShowDiagonal(ui_type_dict[ui])
+            diagwin = ShowDiagonal(ui_type_dict[ui][0])
             diagwin.show()
             win_list.append(diagwin)
 
@@ -530,7 +530,6 @@ class ScrFrWin(QtWidgets.QDialog):
                 ew = ErrFrWin()
                 ew.show()
                 win_list.append(ew)
-
 
     def add_dg1 (self):
         self.set_picture_size()
@@ -911,7 +910,6 @@ class MainFrameWin(QtWidgets.QMainWindow):
                 ew.show()
                 win_list.append(ew)
 
-
     def frame_clear (self):
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -1186,43 +1184,44 @@ class MainFrameWin(QtWidgets.QMainWindow):
 
 #Конец модуля рам
 #----------------------------------------------------------------------------------------------------------------------
-ui_type_dict = {'Ui_Dialog1_1':Ui_Dialog1_1(),
-                'Ui_Dialog1_2':Ui_Dialog1_2(),
-                'Ui_Dialog2_1':Ui_Dialog2_1(),
-                'Ui_Dialog2_2':Ui_Dialog2_2(),
-                'Ui_Dialog3_1':Ui_Dialog3_1(),
-                'Ui_Dialog3_2':Ui_Dialog3_2(),
-                'Ui_Dialog3_3':Ui_Dialog3_3(),
-                'Ui_Dialog3_4':Ui_Dialog3_4(),
-                'Ui_Dialog4_1':Ui_Dialog4_1(),
-                'Ui_Dialog4_2':Ui_Dialog4_2(),
-                'Ui_Dialog4_3':Ui_Dialog4_3(),
-                'Ui_Dialog5_1':Ui_Dialog5_1(),
-                'Ui_Dialog6_1':Ui_Dialog6_1(),
-                'Ui_Dialog6_2':Ui_Dialog6_2(),
-                'Ui_Dialog9_1':Ui_Dialog9_1(),
-                'Ui_DialogF_1':Ui_DialogF_1(),
-                'Ui_DialogF_2':Ui_DialogF_2(),
-                'Ui_DialogF_3':Ui_DialogF_3(),
-                'Ui_DialogF_4':Ui_DialogF_4(),
-                'Ui_DialogF_5':Ui_DialogF_5(),
-                'Ui_DialogF_6':Ui_DialogF_6(),
-                'Ui_DialogF_7':Ui_DialogF_7(),
-                'Ui_DialogF_8':Ui_DialogF_8(),
-                'Ui_DialogF_9':Ui_DialogF_9(),
-                'Ui_DialogF_10':Ui_DialogF_10(),
-                'Ui_DialogF_11':Ui_DialogF_11(),
-                'Ui_DialogR_1':Ui_DialogR_1(),
-                'Ui_DialogR_2':Ui_DialogR_2(),
-                'Ui_DialogR_3':Ui_DialogR_3(),
-                'Ui_DialogR_4':Ui_DialogR_4(),
-                'Ui_DialogDiag1':Ui_DialogDiag1(),
-                'Ui_DialogDiag2':Ui_DialogDiag2(),
-                'Ui_DialogDiag3':Ui_DialogDiag3(),
-                'Ui_DialogDiag4':Ui_DialogDiag4(),
-                'Ui_DialogDiag5':Ui_DialogDiag5(),
-                'Ui_DialogDiag6':Ui_DialogDiag6(),
-                'Ui_DialogDiag7':Ui_DialogDiag7()}
+ui_type_dict = {'Ui_Dialog1_1':(Ui_Dialog1_1(),"../pics/thumbs/1-1.jpg"),
+                'Ui_Dialog1_2':(Ui_Dialog1_2(),"../pics/thumbs/1-2.jpg"),
+                'Ui_Dialog2_1':(Ui_Dialog2_1(),"../pics/thumbs/2-1.jpg"),
+                'Ui_Dialog2_2':(Ui_Dialog2_2(),"../pics/thumbs/2-2.jpg"),
+                'Ui_Dialog3_1':(Ui_Dialog3_1(),"../pics/thumbs/3-1.jpg"),
+                'Ui_Dialog3_2':(Ui_Dialog3_2(),"../pics/thumbs/3-2.jpg"),
+                'Ui_Dialog3_3':(Ui_Dialog3_3(),"../pics/thumbs/3-3.jpg"),
+                'Ui_Dialog3_4':(Ui_Dialog3_4(),"../pics/thumbs/3-4.jpg"),
+                'Ui_Dialog4_1':(Ui_Dialog4_1(),"../pics/thumbs/4-1.jpg"),
+                'Ui_Dialog4_2':(Ui_Dialog4_2(),"../pics/thumbs/4-2.jpg"),
+                'Ui_Dialog4_3':(Ui_Dialog4_3(),"../pics/thumbs/4-3.jpg"),
+                'Ui_Dialog5_1':(Ui_Dialog5_1(),"../pics/thumbs/5-1.jpg"),
+                'Ui_Dialog6_1':(Ui_Dialog6_1(),"../pics/thumbs/6-1.jpg"),
+                'Ui_Dialog6_2':(Ui_Dialog6_2(),"../pics/thumbs/6-2.jpg"),
+                'Ui_Dialog9_1':(Ui_Dialog9_1(),"../pics/thumbs/9-1.jpg"),
+                'Ui_DialogF_1':(Ui_DialogF_1(),"../pics/thumbs/F-1.jpg"),
+                'Ui_DialogF_2':(Ui_DialogF_2(),"../pics/thumbs/F-2.jpg"),
+                'Ui_DialogF_3':(Ui_DialogF_3(),"../pics/thumbs/F-3.jpg"),
+                'Ui_DialogF_4':(Ui_DialogF_4(),"../pics/thumbs/F-4.jpg"),
+                'Ui_DialogF_5':(Ui_DialogF_5(),"../pics/thumbs/F-5.jpg"),
+                'Ui_DialogF_6':(Ui_DialogF_6(),"../pics/thumbs/F-6.jpg"),
+                'Ui_DialogF_7':(Ui_DialogF_7(),"../pics/thumbs/F-7.jpg"),
+                'Ui_DialogF_8':(Ui_DialogF_8(),"../pics/thumbs/F-8.jpg"),
+                'Ui_DialogF_9':(Ui_DialogF_9(),"../pics/thumbs/F-9.jpg"),
+                'Ui_DialogF_10':(Ui_DialogF_10(),"../pics/thumbs/F-10.jpg"),
+                'Ui_DialogF_11':(Ui_DialogF_11(),"../pics/thumbs/F-11.jpg"),
+                'Ui_DialogR_1':(Ui_DialogR_1(),"../pics/thumbs/R-1.jpg"),
+                'Ui_DialogR_2':(Ui_DialogR_2(),"../pics/thumbs/R-2.jpg"),
+                'Ui_DialogR_3':(Ui_DialogR_3(),"../pics/thumbs/R-3.jpg"),
+                'Ui_DialogR_4':(Ui_DialogR_4(),"../pics/thumbs/R-4.jpg"),
+                'Ui_DialogDiag1':(Ui_DialogDiag1(),"../pics/thumbs/diagonal/diag_1.jpg"),
+                'Ui_DialogDiag2':(Ui_DialogDiag2(),"../pics/thumbs/diagonal/diag_2.jpg"),
+                'Ui_DialogDiag3':(Ui_DialogDiag3(),"../pics/thumbs/diagonal/diag_3.jpg"),
+                'Ui_DialogDiag4':(Ui_DialogDiag4(),"../pics/thumbs/diagonal/diag_4.jpg"),
+                'Ui_DialogDiag5':(Ui_DialogDiag5(),"../pics/thumbs/diagonal/diag_5.jpg"),
+                'Ui_DialogDiag6':(Ui_DialogDiag6(),"../pics/thumbs/diagonal/diag_6.jpg"),
+                'Ui_DialogDiag7':(Ui_DialogDiag7(),"../pics/thumbs/diagonal/diag_1.jpg")}
+
 win_list = []
 dict_file_path = 'ppdata.ppsf'
 podpyatnik_dict = {}
