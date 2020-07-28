@@ -17,16 +17,21 @@ class Ui_DialogER(object):
         Dialog.setMinimumSize(QtCore.QSize(300, 70))
         Dialog.setMaximumSize(QtCore.QSize(300, 70))
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(20, 30, 281, 16))
+        self.label.setGeometry(QtCore.QRect(10, 30, 280, 16))
+        self.label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label.setFont(font)
         self.label.setObjectName("label")
+        self.title = ''
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-    def retranslateUi(self, Dialog):
+    def settitle (self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Ошибка!"))
-        self.label.setText(_translate("Dialog", "Введите количество уровней от 2х до 12ти!"))
+        Dialog.setWindowTitle(_translate("Dialog", self.title))
+
+    def retranslateUi(self, Dialog):
+        self.settitle(Dialog)
+

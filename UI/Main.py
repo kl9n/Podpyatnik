@@ -48,8 +48,8 @@ def get_podpyatnikdict():
                     print('Файл словаря пуст')
                     continue
     except:
-        #Сделать окно "Ошибка загрузки сохраненных данных"
         print('Ошибка загрузки словаря, файл отсутствует или поврежден')
+        show_error_window('Ошибка загрузки сохранения!','Файл сохранения отсутствует или поврежден')
 
 def filelinetailconstructor(manufacturer,size,type,index,sizevalues):
     buffer = ''
@@ -104,6 +104,7 @@ def save_podpyatnik_to_dict(openedwindow):
     openedwindow.manufacturer = openedwindow.ui.lineEdit_6.text()
     openedwindow.podpyatniksize = get_podpyatnik_sizes(openedwindow.mainsizevalues)
     openedwindow.podpyatniktype = openedwindow.ui.__class__.__name__
+    is_exist = bool
     print('Список размеров - ',openedwindow.mainsizevalues)
     print('Производитель - ',openedwindow.manufacturer)
     print('Размер подпятника - ',openedwindow.podpyatniksize)
@@ -154,6 +155,21 @@ def delete_podpyatnik(openedwindow):
     # print('Удалено')
     # pprint(podpyatnik_dict)
     pass
+
+def show_error_window(title='Ошибка', box='Что-то пошло не так...'):
+    if __name__ == "__main__":
+        ew = ErrWin(title=title,text=box)
+        ew.show()
+        win_list.append(ew)
+
+class ErrWin(QtWidgets.QDialog):
+    def __init__(self, title, text):
+        QtWidgets.QWidget.__init__(self)
+        self.ui = Ui_DialogER()
+        self.ui.setupUi(self)
+        self.ui.title = title
+        self.ui.settitle(self)
+        self.ui.label.setText(text)
 
 class ShowPodpyatnik(QtWidgets.QDialog):
     def __init__(self, ui):
@@ -226,25 +242,25 @@ class MainWin(QtWidgets.QMainWindow):
     def open_podpyatnik_window(self, ui):
         if __name__ == "__main__":
             global win_list
-            w1_2 = ShowPodpyatnik(ui_type_dict[ui])
-            w1_2.show()
-            win_list.append(w1_2)
+            ppwin = ShowPodpyatnik(ui_type_dict[ui])
+            ppwin.show()
+            win_list.append(ppwin)
 
     def open_diagonal_window(self, ui):
         if __name__ == "__main__":
             global win_list
-            diag1 = ShowDiagonal(ui_type_dict[ui])
-            diag1.show()
-            win_list.append(diag1)
+            diagwin = ShowDiagonal(ui_type_dict[ui])
+            diagwin.show()
+            win_list.append(diagwin)
 
-    def oplev (self):
+    def oplev(self):
         if __name__ == "__main__":
             global win_list
             levelnum.show()
             myapp.hide()
             win_list.append(levelnum)
 
-    def opframe (self):
+    def opframe(self):
         if __name__ == "__main__":
             global win_list
             myframeapp.show()
@@ -253,11 +269,6 @@ class MainWin(QtWidgets.QMainWindow):
 
 #----------------------------------------------------------------------------------------------------------------------
 #МОДУЛЬ УРОВНЕЙ
-class ErrWin(QtWidgets.QDialog):
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
-        self.ui = Ui_DialogER()
-        self.ui.setupUi(self)
 
 class ScrLevWin(QtWidgets.QDialog):
     def __init__(self):
@@ -289,17 +300,9 @@ class ScrLevWin(QtWidgets.QDialog):
                     self.ui.lineEditHB[i].show()
                     count+=step
             else:
-                if __name__ == "__main__":
-                    global win_list
-                    ew = ErrWin()
-                    ew.show()
-                    win_list.append(ew)
+                show_error_window('Ошибка!','Введите количество уровней от 2х до 12ти!')
         except:
-            if __name__ == "__main__":
-                #global win_list
-                ew = ErrWin()
-                ew.show()
-                win_list.append(ew)
+            show_error_window('Ошибка!','Введите количество уровней от 2х до 12ти!')
 
 class MainSecWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -331,17 +334,9 @@ class MainSecWin(QtWidgets.QMainWindow):
                     self.ui.lineEditHB[i].show()
                     count+=step
             else:
-                if __name__ == "__main__":
-                    global win_list
-                    ew = ErrWin()
-                    ew.show()
-                    win_list.append(ew)
+                show_error_window('Ошибка!','Введите количество уровней от 2х до 12ти!')
         except:
-            if __name__ == "__main__":
-                #global win_list
-                ew = ErrWin()
-                ew.show()
-                win_list.append(ew)
+            show_error_window('Ошибка!','Введите количество уровней от 2х до 12ти!')
 
     def lev_screen(self):
         if __name__ == "__main__":
@@ -1228,17 +1223,18 @@ ui_type_dict = {'Ui_Dialog1_1':Ui_Dialog1_1(),
                 'Ui_DialogDiag5':Ui_DialogDiag5(),
                 'Ui_DialogDiag6':Ui_DialogDiag6(),
                 'Ui_DialogDiag7':Ui_DialogDiag7()}
-
+win_list = []
 dict_file_path = 'ppdata.ppsf'
 podpyatnik_dict = {}
-get_podpyatnikdict()
-
-win_list = []
+#get_podpyatnikdict()
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
+    #Если будет глючить при загрузке, перемещаем обратно в тело программы и убираем сообщение об ошибке
+    get_podpyatnikdict()
     myframeapp = MainFrameWin()
     levelnum = MainSecWin()
     myapp = MainWin()
     myapp.show()
     sys.exit(app.exec_())
+
