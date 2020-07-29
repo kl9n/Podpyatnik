@@ -202,6 +202,19 @@ class Ui_Dialog3_3(object):
         self.lineEditlist.append(self.lineEdit_6)
         self.lineEditlist.append(self.lineEdit_7)
 
+        self.lineEdit_6.hide()
+        self.comboBox = QtWidgets.QComboBox(Dialog)
+        self.comboBox.setGeometry(QtCore.QRect(200, 9, 301, 51))
+        font = QtGui.QFont()
+        font.setFamily("Courier New")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.comboBox.setFont(font)
+        self.comboBox.setEditable(True)
+        self.comboBox.setFrame(True)
+        self.comboBox.setObjectName("comboBox")
+
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 

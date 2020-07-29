@@ -95,8 +95,9 @@ def get_podpyatnik_sizes(list):
 
 def save_podpyatnik_to_dict(openedwindow):
     openedwindow.mainsizevalues = []
+    openedwindow.ui.lineEdit_6.setText(openedwindow.ui.comboBox.currentText())
     if openedwindow.ui.lineEdit_6.text():
-        openedwindow.ui.lineEdit_6.setText(openedwindow.ui.lineEdit_6.text().capitalize())
+        #openedwindow.ui.lineEdit_6.setText(openedwindow.ui.lineEdit_6.text().capitalize())
         for i in range(0,len(openedwindow.ui.lineEditlist)):
             openedwindow.mainsizevalues.append(openedwindow.ui.lineEditlist[i].text())
     else:
@@ -177,6 +178,8 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         QtWidgets.QWidget.__init__(self)
         self.ui = ui
         self.ui.setupUi(self)
+        self.ui.comboBox.addItems(myapp.manufacturerlist)
+        self.ui.comboBox.setCurrentText('')
         #Кнопки
         self.ui.saveButton.clicked.connect(self.save_on_click)
 
@@ -195,6 +198,8 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
         self.sizevalues = sizevalues
         self.ui.deleteButton.show()
         self.load_data()
+        self.ui.comboBox.addItems(myapp.manufacturerlist)
+        self.ui.comboBox.setCurrentText(self.ui.lineEdit_6.text())
         #Кнопки
         self.ui.saveButton.clicked.connect(self.save_on_click)
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
