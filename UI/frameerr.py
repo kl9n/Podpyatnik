@@ -14,6 +14,11 @@ class Ui_DialogFER(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(334, 190)
+        Dialog.setMinimumSize(QtCore.QSize(334, 190))
+        Dialog.setMaximumSize(QtCore.QSize(334, 190))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../pics/icon/info.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Dialog.setWindowIcon(icon)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(0, 0, 334, 192))
         self.label.setText("")

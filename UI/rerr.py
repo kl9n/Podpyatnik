@@ -13,9 +13,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_DialogER(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(300, 70)
-        Dialog.setMinimumSize(QtCore.QSize(300, 70))
-        Dialog.setMaximumSize(QtCore.QSize(300, 70))
+        Dialog.resize(310, 70)
+        Dialog.setMinimumSize(QtCore.QSize(310, 70))
+        Dialog.setMaximumSize(QtCore.QSize(310, 70))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../pics/icon/info.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Dialog.setWindowIcon(icon)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(10, 30, 280, 16))
         self.label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)

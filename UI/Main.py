@@ -1,4 +1,4 @@
-import sys; from pprint import pprint
+import sys;
 from WMain import *; from W1_1 import *
 from W1_2 import *; from W2_1 import *
 from W2_2 import *; from W3_1 import *
@@ -20,7 +20,7 @@ from Diag3 import *; from Diag4 import *
 from Diag5 import *; from Diag6 import *
 from Diag7 import *
 from racksectionadv import *
-from rerr import *
+from rerr import *; from YNWin import *
 from framedimuiadv import *
 from frameerr import *
 from framescreenadv import *
@@ -42,13 +42,11 @@ def get_podpyatnikdict():
                         podpyatnik_dict[manufacturer][size][type].append(sizevalues)
                     except:
                         dictitem_builder(manufacturer=manufacturer, size=size, type=type, sizevalues=sizevalues)
-                    print('Загружен словарь из файла: ', dict_file_path)
-                    pprint(podpyatnik_dict)
                 else:
-                    print('Файл словаря пуст')
+                    print('Пустая строка в файле')
                     continue
+        print('Загружен словарь из файла: ', dict_file_path)
     except:
-        print('Ошибка загрузки словаря, файл отсутствует или поврежден')
         show_error_window('Ошибка загрузки сохранения!','Файл сохранения отсутствует или поврежден')
 
 def filelinetailconstructor(manufacturer,size,type,index,sizevalues):
@@ -95,9 +93,7 @@ def get_podpyatnik_sizes(list):
 
 def save_podpyatnik_to_dict(openedwindow):
     openedwindow.mainsizevalues = []
-    openedwindow.ui.lineEdit_6.setText(openedwindow.ui.comboBox.currentText())
     if openedwindow.ui.lineEdit_6.text():
-        #openedwindow.ui.lineEdit_6.setText(openedwindow.ui.lineEdit_6.text().capitalize())
         for i in range(0,len(openedwindow.ui.lineEditlist)):
             openedwindow.mainsizevalues.append(openedwindow.ui.lineEditlist[i].text())
     else:
@@ -105,6 +101,7 @@ def save_podpyatnik_to_dict(openedwindow):
     openedwindow.manufacturer = openedwindow.ui.lineEdit_6.text()
     openedwindow.podpyatniksize = get_podpyatnik_sizes(openedwindow.mainsizevalues)
     openedwindow.podpyatniktype = openedwindow.ui.__class__.__name__
+    sizeforprint = get_podpyatnik_sizes(openedwindow.mainsizevalues)
     is_exist = bool
     print('Список размеров - ',openedwindow.mainsizevalues)
     print('Производитель - ',openedwindow.manufacturer)
@@ -113,18 +110,18 @@ def save_podpyatnik_to_dict(openedwindow):
     try:
         for ss in podpyatnik_dict[openedwindow.manufacturer][openedwindow.podpyatniksize][openedwindow.podpyatniktype]:
             if openedwindow.mainsizevalues == ss:
-                print('Найдены идентичные размеры в вариантах этого типа')
+                show_error_window('Отмена сохранения!','Такой подпятник уже есть.')
                 is_exist = True
                 break
             else:
                 is_exist = False
         if not is_exist:
             podpyatnik_dict[openedwindow.manufacturer][openedwindow.podpyatniksize][openedwindow.podpyatniktype].append(openedwindow.mainsizevalues)
-            print('Добавляем новый вариант имеющегося типа')
     except:
-        print('Еще ничего нет,запускаю билдер')
+        is_exist = False
         dictitem_builder(manufacturer=openedwindow.manufacturer, size=openedwindow.podpyatniksize,type=openedwindow.podpyatniktype,sizevalues=openedwindow.mainsizevalues)
-    pprint(podpyatnik_dict)
+    if not is_exist:
+        show_error_window('Сохранено!', 'Подпятник "{} {}" сохранен.'.format(openedwindow.manufacturer, sizeforprint))
     myapp.get_manufacturers()
 
 def save_dict_to_file():
@@ -154,15 +151,54 @@ def delete_podpyatnik(openedwindow):
         podpyatnik_dict[openedwindow.manufacturer].pop(openedwindow.size)
     if len(podpyatnik_dict[openedwindow.manufacturer]) < 1:
         podpyatnik_dict.pop(openedwindow.manufacturer)
-    print('Удалено')
-    pprint(podpyatnik_dict)
     myapp.get_manufacturers()
+    show_error_window('Удалено', 'Подпятник "{} {}" удален.'.format(openedwindow.manufacturer, openedwindow.size))
+
+def is_fully_filled(openedwindow):
+    openedwindow.ui.lineEdit_6.setText(openedwindow.ui.comboBox.currentText())
+    isff = bool
+    for i in range(0, len(openedwindow.ui.lineEditlist)):
+        if not openedwindow.ui.lineEditlist[i].text():
+            isff = False
+            break
+        else:
+            isff = True
+    if isff:
+        save_podpyatnik_to_dict(openedwindow)
+        save_dict_to_file()
+    else:
+        show_yn_window(openedwindow=openedwindow)
+
+def show_yn_window(openedwindow):
+    if __name__ == "__main__":
+        ynw = YNWin(openedwindow)
+        ynw.show()
+        win_list.append(ynw)
 
 def show_error_window(title='Ошибка', box='Что-то пошло не так...'):
     if __name__ == "__main__":
         ew = ErrWin(title=title,text=box)
         ew.show()
         win_list.append(ew)
+
+class YNWin(QtWidgets.QDialog):
+    def __init__(self, openedwindow):
+        QtWidgets.QWidget.__init__(self)
+        self.ui = YN_Dialog()
+        self.ui.setupUi(self)
+        #Кнопки
+        self.ui.YesButton.clicked.connect(self.yes)
+        self.ui.NoButton.clicked.connect(self.no)
+        self.openedwindow = openedwindow
+
+    def yes(self):
+        save_podpyatnik_to_dict(self.openedwindow)
+        save_dict_to_file()
+        self.close()
+
+    def no(self):
+        print('Операция сохранения прервана')
+        self.close()
 
 class ErrWin(QtWidgets.QDialog):
     def __init__(self, title, text):
@@ -184,8 +220,7 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         self.ui.saveButton.clicked.connect(self.save_on_click)
 
     def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
+        is_fully_filled(self)
 
 class ShowSavedPodpyatnik(QtWidgets.QDialog):
     def __init__(self, ui, manufacturer, size, type, sizevalues):
@@ -209,8 +244,7 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
             self.ui.lineEditlist[i].setText(self.sizevalues[i])
 
     def save_on_click(self):
-        save_podpyatnik_to_dict(self)
-        save_dict_to_file()
+        is_fully_filled(self)
 
     def delete_on_click(self):
         delete_podpyatnik(self)
@@ -282,6 +316,9 @@ class MainWin(QtWidgets.QMainWindow):
 
     def get_manufacturers(self):
         self.ui.manufacturer_comboBox.clear()
+        self.ui.size_comboBox.clear()
+        self.ui.type_comboBox.clear()
+        self.ui.variant_comboBox.clear()
         self.manufacturerlist = []
         if len(podpyatnik_dict):
             for name in podpyatnik_dict:
