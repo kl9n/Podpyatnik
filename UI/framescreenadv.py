@@ -14,7 +14,7 @@ class Ui_DialogFRSC(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(650, 670)
-        Dialog.setMinimumSize(QtCore.QSize(230, 670))
+        Dialog.setMinimumSize(QtCore.QSize(650, 670))
         Dialog.setMaximumSize(QtCore.QSize(650, 670))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../pics/thumbs/frd1.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)

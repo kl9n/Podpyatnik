@@ -402,7 +402,6 @@ class ShowDiagonal(QtWidgets.QDialog):
         self.ui.screenshotButton.hide()
         current_path = screenshots_path + '\\{}\\{}'.format(self.ppmodule, currentdate)
         makedirs(current_path, exist_ok=True)
-        self.mainsizevalues = []
         if not self.ui.lineEdit_6.text():
             self.ui.lineEdit_6.setFocusPolicy(QtCore.Qt.ClickFocus)
             self.ui.screenshotButton.show()
@@ -723,7 +722,31 @@ class ScrFrWin(QtWidgets.QDialog):
             self.ui.lineEdit_d1[i].setText(myframeapp.ui.lineEdit_d1[i].text())
 
     def take_screenshot(self):
-        pass
+        self.ui.lineEdit.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.ui.screenshotButton.hide()
+        current_path = screenshots_path + '\\{}\\{}'.format(self.ppmodule, currentdate)
+        makedirs(current_path, exist_ok=True)
+        if not self.ui.lineEdit.text():
+            self.ui.lineEdit.setFocusPolicy(QtCore.Qt.ClickFocus)
+            self.ui.screenshotButton.show()
+            show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
+            return
+        filename = self.ui.lineEdit.text() + self.ui.lineEdit_frame.text() + self.ui.lineEdit_variant.text()
+        i = 2
+        while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
+            filename = filename + ' ({})'.format(i)
+            i += 1
+        coordx = self.geometry().x()
+        coordy = self.geometry().y()
+
+        def screencapt(self):
+            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 640, coordy + 670))
+            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+
+        QtCore.QTimer.singleShot(50, lambda: screencapt(self))
+        QtCore.QTimer.singleShot(50, lambda: self.ui.screenshotButton.show())
+        QtCore.QTimer.singleShot(50, lambda: self.ui.lineEdit.setFocusPolicy(QtCore.Qt.ClickFocus))
+        QtCore.QTimer.singleShot(60, lambda: show_error_window('{} сохранен!'.format(filename), current_path))
 
     def rebuilt_frame (self):
         history = self.undoh
