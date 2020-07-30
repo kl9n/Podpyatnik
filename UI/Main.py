@@ -26,7 +26,8 @@ from frameerr import *
 from framescreenadv import *
 from racksecscreenadv import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-import pyscreenshot as ImageGrab
+#import pyscreenshot as ImageGrab
+from PIL import Image, ImageGrab
 
 def get_podpyatnikdict():
     try:
@@ -275,8 +276,10 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt (self):
-            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
-            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
+            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            img = ImageGrab.grab((coordx,coordy,coordx+560, coordy + 560))
+            img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -364,8 +367,10 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt(self):
-            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
-            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
+            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            img = ImageGrab.grab((coordx, coordy, coordx + 560, coordy + 560))
+            img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -416,8 +421,10 @@ class ShowDiagonal(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt(self):
-            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
-            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
+            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            img = ImageGrab.grab((coordx, coordy, coordx + 560, coordy + 560))
+            img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
         QtCore.QTimer.singleShot(50, lambda: screencapt(self))
         QtCore.QTimer.singleShot(50, lambda: self.ui.screenshotButton.show())
@@ -608,7 +615,7 @@ class ScrLevWin(QtWidgets.QDialog):
             self.ui.screenshotButton.show()
             show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
             return
-        filename = self.ui.lineEdit.text() + ' ' + levelnum.ui.lineEdit_ln.text() + 'ур ' + self.ui.lineEdit_5.text() + '_' + self.ui.lineEdit_2.text()
+        filename = self.ui.lineEdit.text() + ' ' + levelnum.ui.lineEdit_ln.text() + 'ур ' + self.ui.lineEdit_5.text() + ' ' + self.ui.lineEdit_2.text()
         i = 2
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
             filename = filename + ' ({})'.format(i)
@@ -617,8 +624,10 @@ class ScrLevWin(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt(self):
-            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 655, coordy + 650))
-            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 655, coordy + 650))
+            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            img = ImageGrab.grab((coordx, coordy, coordx + 655, coordy + 650))
+            img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
         QtCore.QTimer.singleShot(50, lambda: screencapt(self))
         QtCore.QTimer.singleShot(50, lambda: self.ui.screenshotButton.show())
@@ -755,7 +764,7 @@ class ScrFrWin(QtWidgets.QDialog):
             self.ui.screenshotButton.show()
             show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
             return
-        filename = self.ui.lineEdit.text() + ' ' + self.ui.lineEdit_frame.text() + '_' + self.ui.lineEdit_variant.text()
+        filename = self.ui.lineEdit.text() + ' ' + self.ui.lineEdit_frame.text() + ' ' + self.ui.lineEdit_variant.text()
         i = 2
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
             filename = filename + ' ({})'.format(i)
@@ -764,8 +773,10 @@ class ScrFrWin(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt(self):
-            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 640, coordy + 670))
-            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 640, coordy + 670))
+            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+            img = ImageGrab.grab((coordx, coordy, coordx + 640, coordy + 670))
+            img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
         QtCore.QTimer.singleShot(50, lambda: screencapt(self))
         QtCore.QTimer.singleShot(50, lambda: self.ui.screenshotButton.show())
