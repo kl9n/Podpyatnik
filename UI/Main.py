@@ -608,7 +608,7 @@ class ScrLevWin(QtWidgets.QDialog):
             self.ui.screenshotButton.show()
             show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
             return
-        filename = self.ui.lineEdit.text() + ' ' + levelnum.ui.lineEdit_ln.text() + 'ур ' + self.ui.lineEdit_5.text() + ' ' + self.ui.lineEdit_2.text()
+        filename = self.ui.lineEdit.text() + ' ' + levelnum.ui.lineEdit_ln.text() + 'ур ' + self.ui.lineEdit_5.text() + '_' + self.ui.lineEdit_2.text()
         i = 2
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
             filename = filename + ' ({})'.format(i)
@@ -755,7 +755,7 @@ class ScrFrWin(QtWidgets.QDialog):
             self.ui.screenshotButton.show()
             show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
             return
-        filename = self.ui.lineEdit.text() + ' ' + self.ui.lineEdit_frame.text() + ' ' + self.ui.lineEdit_variant.text()
+        filename = self.ui.lineEdit.text() + ' ' + self.ui.lineEdit_frame.text() + '_' + self.ui.lineEdit_variant.text()
         i = 2
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
             filename = filename + ' ({})'.format(i)
