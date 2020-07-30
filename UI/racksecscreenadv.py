@@ -14,7 +14,7 @@ class Ui_DialogSCSC(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(670, 650)
-        Dialog.setMinimumSize(QtCore.QSize(330, 650))
+        Dialog.setMinimumSize(QtCore.QSize(670, 650))
         Dialog.setMaximumSize(QtCore.QSize(670, 650))
         self.bgrnd = QtWidgets.QLabel(Dialog)
         self.bgrnd.setGeometry(QtCore.QRect(0, 0, 671, 651))

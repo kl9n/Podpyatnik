@@ -599,7 +599,31 @@ class ScrLevWin(QtWidgets.QDialog):
         self.build_section()
 
     def take_screenshot(self):
-        pass
+        self.ui.lineEdit.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.ui.screenshotButton.hide()
+        current_path = screenshots_path + '\\{}\\{}'.format(self.ppmodule, currentdate)
+        makedirs(current_path, exist_ok=True)
+        if not self.ui.lineEdit.text():
+            self.ui.lineEdit.setFocusPolicy(QtCore.Qt.ClickFocus)
+            self.ui.screenshotButton.show()
+            show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
+            return
+        filename = self.ui.lineEdit.text() + ' ' + levelnum.ui.lineEdit_ln.text() + 'ур ' + self.ui.lineEdit_5.text() + ' ' + self.ui.lineEdit_2.text()
+        i = 2
+        while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
+            filename = filename + ' ({})'.format(i)
+            i += 1
+        coordx = self.geometry().x()
+        coordy = self.geometry().y()
+
+        def screencapt(self):
+            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 655, coordy + 650))
+            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+
+        QtCore.QTimer.singleShot(50, lambda: screencapt(self))
+        QtCore.QTimer.singleShot(50, lambda: self.ui.screenshotButton.show())
+        QtCore.QTimer.singleShot(50, lambda: self.ui.lineEdit.setFocusPolicy(QtCore.Qt.ClickFocus))
+        QtCore.QTimer.singleShot(60, lambda: show_error_window('{} сохранена!'.format(filename), current_path))
 
     def build_section (self):
         for i in range(0,11):
@@ -731,7 +755,7 @@ class ScrFrWin(QtWidgets.QDialog):
             self.ui.screenshotButton.show()
             show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
             return
-        filename = self.ui.lineEdit.text() + self.ui.lineEdit_frame.text() + self.ui.lineEdit_variant.text()
+        filename = self.ui.lineEdit.text() + ' ' + self.ui.lineEdit_frame.text() + ' ' + self.ui.lineEdit_variant.text()
         i = 2
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
             filename = filename + ' ({})'.format(i)
@@ -746,7 +770,7 @@ class ScrFrWin(QtWidgets.QDialog):
         QtCore.QTimer.singleShot(50, lambda: screencapt(self))
         QtCore.QTimer.singleShot(50, lambda: self.ui.screenshotButton.show())
         QtCore.QTimer.singleShot(50, lambda: self.ui.lineEdit.setFocusPolicy(QtCore.Qt.ClickFocus))
-        QtCore.QTimer.singleShot(60, lambda: show_error_window('{} сохранен!'.format(filename), current_path))
+        QtCore.QTimer.singleShot(60, lambda: show_error_window('{} сохранена!'.format(filename), current_path))
 
     def rebuilt_frame (self):
         history = self.undoh
