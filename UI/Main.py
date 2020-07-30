@@ -26,7 +26,7 @@ from frameerr import *
 from framescreenadv import *
 from racksecscreenadv import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-import pyscreenshot as ImageGrab;
+import pyscreenshot as ImageGrab
 
 def get_podpyatnikdict():
     try:
@@ -248,7 +248,6 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         self.ui.menuButton.hide()
         self.ui.saveButton.hide()
         self.ui.screenshotButton.hide()
-        self.ui.deleteButton.hide()
         current_path = screenshots_path + '\\{}\\{}'.format(self.ppmodule, currentdate)
         makedirs(current_path, exist_ok=True)
         self.mainsizevalues = []
@@ -280,7 +279,6 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         QtCore.QTimer.singleShot(50, lambda: self.ui.lineEdit_6.hide())
         QtCore.QTimer.singleShot(50, lambda: self.ui.comboBox.show())
         QtCore.QTimer.singleShot(50, lambda: self.ui.menuButton.show())
-        # self.lineEdit.setFocusPolicy(QtCore.Qt.ClickFocus)
         QtCore.QTimer.singleShot(60, lambda: show_error_window('{} сохранен!'.format(filename), current_path))
 
     def save_on_click(self):
@@ -325,7 +323,45 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
             self.ui.menuButton.setIcon(icon4)
 
     def take_screenshot(self):
-        pass
+        self.ui.lineEdit_6.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.ui.comboBox.hide()
+        self.ui.lineEdit_6.show()
+        self.ui.menuButton.hide()
+        self.ui.saveButton.hide()
+        self.ui.screenshotButton.hide()
+        self.ui.deleteButton.hide()
+        current_path = screenshots_path + '\\{}\\{}'.format(self.ppmodule, currentdate)
+        makedirs(current_path, exist_ok=True)
+        self.mainsizevalues = []
+        if self.ui.comboBox.currentText():
+            for i in range(0, len(self.ui.lineEditlist)):
+                self.mainsizevalues.append(self.ui.lineEditlist[i].text())
+        else:
+            show_error_window('Не сохранено!', 'Введите название производителя!')
+            return
+        self.ui.lineEdit_6.setText(self.ui.comboBox.currentText())
+        self.sizeforprint = get_podpyatnik_sizes(self.mainsizevalues)
+        filename = self.ui.comboBox.currentText() + ' ' + self.sizeforprint
+        i = 2
+        while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
+            filename = filename + ' В{}'.format(i)
+            i += 1
+        coordx = self.geometry().x()
+        coordy = self.geometry().y()
+
+        def screencapt(self):
+            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
+            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.ui.menuButton.setIcon(icon4)
+        self.menubuttonpressed = False
+        QtCore.QTimer.singleShot(50, lambda: screencapt(self))
+        QtCore.QTimer.singleShot(50, lambda: self.ui.lineEdit_6.hide())
+        QtCore.QTimer.singleShot(50, lambda: self.ui.comboBox.show())
+        QtCore.QTimer.singleShot(50, lambda: self.ui.menuButton.show())
+        QtCore.QTimer.singleShot(60, lambda: show_error_window('{} сохранен!'.format(filename), current_path))
 
     def load_data(self):
         for i in range(0,len(self.ui.lineEditlist)):
