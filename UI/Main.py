@@ -255,6 +255,13 @@ class ShowPodpyatnik(QtWidgets.QDialog):
             for i in range(0, len(self.ui.lineEditlist)):
                 self.mainsizevalues.append(self.ui.lineEditlist[i].text())
         else:
+            icon4 = QtGui.QIcon()
+            icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.ui.menuButton.setIcon(icon4)
+            self.menubuttonpressed = False
+            self.ui.lineEdit_6.hide()
+            self.ui.comboBox.show()
+            self.ui.menuButton.show()
             show_error_window('Не сохранено!', 'Введите название производителя!')
             return
         self.ui.lineEdit_6.setText(self.ui.comboBox.currentText())
@@ -337,6 +344,13 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
             for i in range(0, len(self.ui.lineEditlist)):
                 self.mainsizevalues.append(self.ui.lineEditlist[i].text())
         else:
+            icon4 = QtGui.QIcon()
+            icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.ui.menuButton.setIcon(icon4)
+            self.menubuttonpressed = False
+            self.ui.lineEdit_6.hide()
+            self.ui.comboBox.show()
+            self.ui.menuButton.show()
             show_error_window('Не сохранено!', 'Введите название производителя!')
             return
         self.ui.lineEdit_6.setText(self.ui.comboBox.currentText())
@@ -384,7 +398,32 @@ class ShowDiagonal(QtWidgets.QDialog):
         self.ui.screenshotButton.clicked.connect(self.take_screenshot)
 
     def take_screenshot(self):
-            pass
+        self.ui.lineEdit_6.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.ui.screenshotButton.hide()
+        current_path = screenshots_path + '\\{}\\{}'.format(self.ppmodule, currentdate)
+        makedirs(current_path, exist_ok=True)
+        self.mainsizevalues = []
+        if not self.ui.lineEdit_6.text():
+            self.ui.lineEdit_6.setFocusPolicy(QtCore.Qt.ClickFocus)
+            self.ui.screenshotButton.show()
+            show_error_window('Не сохранено!', 'Введите название производителя!')
+            return
+        filename = self.ui.lineEdit_6.text()
+        i = 2
+        while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
+            filename = filename + ' В{}'.format(i)
+            i += 1
+        coordx = self.geometry().x()
+        coordy = self.geometry().y()
+
+        def screencapt(self):
+            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
+            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+
+        QtCore.QTimer.singleShot(50, lambda: screencapt(self))
+        QtCore.QTimer.singleShot(50, lambda: self.ui.screenshotButton.show())
+        QtCore.QTimer.singleShot(50, lambda: self.ui.lineEdit_6.setFocusPolicy(QtCore.Qt.ClickFocus))
+        QtCore.QTimer.singleShot(60, lambda: show_error_window('{} сохранен!'.format(filename), current_path))
 
 class MainWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
