@@ -303,7 +303,7 @@ class ShowDiagonal(QtWidgets.QDialog):
         #Кнопки
         self.ui.screenshotButton.clicked.connect(self.take_screenshot)
 
-        def take_screenshot(self):
+    def take_screenshot(self):
             pass
 
 class MainWin(QtWidgets.QMainWindow):
