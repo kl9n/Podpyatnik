@@ -154,6 +154,18 @@ class Ui_DialogSCSC(object):
         for bn in range(0,11):
             self.lineEditHB[bn].raise_()
 
+        self.screenshotButton = QtWidgets.QPushButton(Dialog)
+        self.screenshotButton.setGeometry(QtCore.QRect(605, 15, 51, 51))
+        self.screenshotButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../pics/thumbs/screenshotbtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.screenshotButton.setIcon(icon)
+        self.screenshotButton.setIconSize(QtCore.QSize(45, 45))
+        self.screenshotButton.setShortcut("")
+        self.screenshotButton.setDefault(False)
+        self.screenshotButton.setFlat(True)
+        self.screenshotButton.setObjectName("screenshotButton")
+
         self.Rframe_1.raise_()
         self.label.raise_()
         self.Rframe_2.raise_()

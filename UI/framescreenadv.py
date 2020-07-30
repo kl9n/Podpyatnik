@@ -208,6 +208,18 @@ class Ui_DialogFRSC(object):
             self.label_dg2[i].raise_()
             self.label_g2[i].raise_()
 
+        self.screenshotButton = QtWidgets.QPushButton(Dialog)
+        self.screenshotButton.setGeometry(QtCore.QRect(585, 15, 51, 51))
+        self.screenshotButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../pics/thumbs/screenshotbtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.screenshotButton.setIcon(icon)
+        self.screenshotButton.setIconSize(QtCore.QSize(45, 45))
+        self.screenshotButton.setShortcut("")
+        self.screenshotButton.setDefault(False)
+        self.screenshotButton.setFlat(True)
+        self.screenshotButton.setObjectName("screenshotButton")
+
         for i in range(0, 60):
             self.lineEdit_d1[i].raise_()
 

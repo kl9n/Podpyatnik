@@ -214,10 +214,32 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         QtWidgets.QWidget.__init__(self)
         self.ui = ui
         self.ui.setupUi(self)
+        self.menubuttonpressed = False
         self.ui.comboBox.addItems(myapp.manufacturerlist)
         self.ui.comboBox.setCurrentText('')
         #Кнопки
+        self.ui.menuButton.clicked.connect(self.show_menu)
         self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.screenshotButton.clicked.connect(self.take_screenshot)
+
+    def show_menu(self):
+        if not self.menubuttonpressed:
+            self.menubuttonpressed = True
+            self.ui.saveButton.show()
+            self.ui.screenshotButton.show()
+            icon4 = QtGui.QIcon()
+            icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtnpressed.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.ui.menuButton.setIcon(icon4)
+        else:
+            self.menubuttonpressed = False
+            self.ui.saveButton.hide()
+            self.ui.screenshotButton.hide()
+            icon4 = QtGui.QIcon()
+            icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.ui.menuButton.setIcon(icon4)
+
+    def take_screenshot(self):
+        pass
 
     def save_on_click(self):
         is_fully_filled(self)
@@ -231,13 +253,36 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
         self.size = size
         self.type = type
         self.sizevalues = sizevalues
-        self.ui.deleteButton.show()
         self.load_data()
+        self.menubuttonpressed = False
         self.ui.comboBox.addItems(myapp.manufacturerlist)
         self.ui.comboBox.setCurrentText(self.ui.lineEdit_6.text())
         #Кнопки
+        self.ui.menuButton.clicked.connect(self.show_menu)
         self.ui.saveButton.clicked.connect(self.save_on_click)
+        self.ui.screenshotButton.clicked.connect(self.take_screenshot)
         self.ui.deleteButton.clicked.connect(self.delete_on_click)
+
+    def show_menu(self):
+        if not self.menubuttonpressed:
+            self.menubuttonpressed = True
+            self.ui.saveButton.show()
+            self.ui.screenshotButton.show()
+            self.ui.deleteButton.show()
+            icon4 = QtGui.QIcon()
+            icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtnpressed.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.ui.menuButton.setIcon(icon4)
+        else:
+            self.menubuttonpressed = False
+            self.ui.saveButton.hide()
+            self.ui.screenshotButton.hide()
+            self.ui.deleteButton.hide()
+            icon4 = QtGui.QIcon()
+            icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.ui.menuButton.setIcon(icon4)
+
+    def take_screenshot(self):
+        pass
 
     def load_data(self):
         for i in range(0,len(self.ui.lineEditlist)):
@@ -255,6 +300,11 @@ class ShowDiagonal(QtWidgets.QDialog):
         QtWidgets.QWidget.__init__(self)
         self.ui = ui
         self.ui.setupUi(self)
+        #Кнопки
+        self.ui.screenshotButton.clicked.connect(self.take_screenshot)
+
+        def take_screenshot(self):
+            pass
 
 class MainWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -425,7 +475,12 @@ class ScrLevWin(QtWidgets.QDialog):
         self.ui.lineEdit_5.setText(levelnum.ui.lineEdit_5.text())
         self.ui.lineEdit_rackwidth.setText(levelnum.ui.lineEdit_rackwidth.text())
         self.ui.textEdit.setText(levelnum.ui.textEdit.toPlainText())
+        #Кнопка
+        self.ui.screenshotButton.clicked.connect(self.take_screenshot)
         self.build_section()
+
+    def take_screenshot(self):
+        pass
 
     def build_section (self):
         for i in range(0,11):
@@ -539,10 +594,15 @@ class ScrFrWin(QtWidgets.QDialog):
         self.huinya = myframeapp.huinya
         self.undoh = myframeapp.undoh
         self.ultracount = myframeapp.ultracount
+        #Кнопка
+        self.ui.screenshotButton.clicked.connect(self.take_screenshot)
         self.cast_frame()
         self.ui.lineEdit_d0.setText(myframeapp.ui.lineEdit_d0.text())
         for i in range(0, 60):
             self.ui.lineEdit_d1[i].setText(myframeapp.ui.lineEdit_d1[i].text())
+
+    def take_screenshot(self):
+        pass
 
     def rebuilt_frame (self):
         history = self.undoh
