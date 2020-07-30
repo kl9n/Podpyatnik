@@ -1,4 +1,4 @@
-import sys;
+import sys; from os import path, makedirs; from datetime import datetime
 from WMain import *; from W1_1 import *
 from W1_2 import *; from W2_1 import *
 from W2_2 import *; from W3_1 import *
@@ -26,6 +26,7 @@ from frameerr import *
 from framescreenadv import *
 from racksecscreenadv import *
 from PyQt5 import QtCore, QtGui, QtWidgets
+import pyscreenshot as ImageGrab;
 
 def get_podpyatnikdict():
     try:
@@ -48,6 +49,7 @@ def get_podpyatnikdict():
         print('Загружен словарь из файла: ', dict_file_path)
     except:
         show_error_window('Ошибка загрузки сохранения!','Файл сохранения отсутствует или поврежден')
+    myapp.get_manufacturers()
 
 def filelinetailconstructor(manufacturer,size,type,index,sizevalues):
     buffer = ''
@@ -215,6 +217,7 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         self.ui = ui
         self.ui.setupUi(self)
         self.menubuttonpressed = False
+        self.ppmodule = 'Подпятники'
         self.ui.comboBox.addItems(myapp.manufacturerlist)
         self.ui.comboBox.setCurrentText('')
         #Кнопки
@@ -239,7 +242,46 @@ class ShowPodpyatnik(QtWidgets.QDialog):
             self.ui.menuButton.setIcon(icon4)
 
     def take_screenshot(self):
-        pass
+        self.ui.lineEdit_6.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.ui.comboBox.hide()
+        self.ui.lineEdit_6.show()
+        self.ui.menuButton.hide()
+        self.ui.saveButton.hide()
+        self.ui.screenshotButton.hide()
+        self.ui.deleteButton.hide()
+        current_path = screenshots_path + '\\{}\\{}'.format(self.ppmodule, currentdate)
+        makedirs(current_path, exist_ok=True)
+        self.mainsizevalues = []
+        if self.ui.comboBox.currentText():
+            for i in range(0, len(self.ui.lineEditlist)):
+                self.mainsizevalues.append(self.ui.lineEditlist[i].text())
+        else:
+            show_error_window('Не сохранено!', 'Введите название производителя!')
+            return
+        self.ui.lineEdit_6.setText(self.ui.comboBox.currentText())
+        self.sizeforprint = get_podpyatnik_sizes(self.mainsizevalues)
+        filename = self.ui.comboBox.currentText() + ' ' + self.sizeforprint
+        i = 2
+        while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
+            filename = filename + ' В{}'.format(i)
+            i += 1
+        coordx = self.geometry().x()
+        coordy = self.geometry().y()
+
+        def screencapt (self):
+            screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
+            screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
+
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("../pics/thumbs/menubtn.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.ui.menuButton.setIcon(icon4)
+        self.menubuttonpressed = False
+        QtCore.QTimer.singleShot(50, lambda : screencapt(self))
+        QtCore.QTimer.singleShot(50, lambda: self.ui.lineEdit_6.hide())
+        QtCore.QTimer.singleShot(50, lambda: self.ui.comboBox.show())
+        QtCore.QTimer.singleShot(50, lambda: self.ui.menuButton.show())
+        # self.lineEdit.setFocusPolicy(QtCore.Qt.ClickFocus)
+        QtCore.QTimer.singleShot(60, lambda: show_error_window('{} сохранен!'.format(filename), current_path))
 
     def save_on_click(self):
         is_fully_filled(self)
@@ -255,6 +297,7 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
         self.sizevalues = sizevalues
         self.load_data()
         self.menubuttonpressed = False
+        self.ppmodule = 'Подпятники'
         self.ui.comboBox.addItems(myapp.manufacturerlist)
         self.ui.comboBox.setCurrentText(self.ui.lineEdit_6.text())
         #Кнопки
@@ -300,6 +343,7 @@ class ShowDiagonal(QtWidgets.QDialog):
         QtWidgets.QWidget.__init__(self)
         self.ui = ui
         self.ui.setupUi(self)
+        self.ppmodule = 'Диагонали'
         #Кнопки
         self.ui.screenshotButton.clicked.connect(self.take_screenshot)
 
@@ -475,6 +519,7 @@ class ScrLevWin(QtWidgets.QDialog):
         self.ui.lineEdit_5.setText(levelnum.ui.lineEdit_5.text())
         self.ui.lineEdit_rackwidth.setText(levelnum.ui.lineEdit_rackwidth.text())
         self.ui.textEdit.setText(levelnum.ui.textEdit.toPlainText())
+        self.ppmodule = 'Секции'
         #Кнопка
         self.ui.screenshotButton.clicked.connect(self.take_screenshot)
         self.build_section()
@@ -594,6 +639,7 @@ class ScrFrWin(QtWidgets.QDialog):
         self.huinya = myframeapp.huinya
         self.undoh = myframeapp.undoh
         self.ultracount = myframeapp.ultracount
+        self.ppmodule = 'Рамы'
         #Кнопка
         self.ui.screenshotButton.clicked.connect(self.take_screenshot)
         self.cast_frame()
@@ -1429,16 +1475,19 @@ ui_type_dict = {'Ui_Dialog1_1':(Ui_Dialog1_1(),"../pics/thumbs/1-1.jpg"),
 
 win_list = []
 dict_file_path = 'ppdata.ppsf'
+screenshots_path = 'C:\\Подпятник Скрины'
+screenshot_file_extension = '.png'
 podpyatnik_dict = {}
-#get_podpyatnikdict()
+currentdate = datetime.now().strftime('%Y-%m-%d')
+
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
-    #Если будет глючить при загрузке, перемещаем обратно в тело программы и убираем сообщение об ошибке
-    get_podpyatnikdict()
     myframeapp = MainFrameWin()
     levelnum = MainSecWin()
     myapp = MainWin()
     myapp.show()
+    get_podpyatnikdict()
     sys.exit(app.exec_())
+
 
