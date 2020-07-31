@@ -1,20 +1,21 @@
 import sys; from os import path, makedirs; from datetime import datetime
-from WMain import *; from W1_1 import *
-from W1_2 import *; from W2_1 import *
-from W2_2 import *; from W3_1 import *
-from W3_2 import *; from W3_3 import *
-from W3_4 import *; from W4_1 import *
-from W4_2 import *; from W4_3 import *
-from W5_1 import *; from W6_1 import *
-from W6_2 import *; from W9_1 import *
-from WF_1 import *; from WF_2 import *
-from WF_3 import *; from WF_4 import *
-from WF_5 import *; from WF_6 import *
-from WF_7 import *; from WR_1 import *
-from WR_2 import *; from WR_3 import *
-from WR_4 import *; from WF_8 import *
-from WF_9 import *; from WF_10 import *
-from WF_11 import *
+from WMain import *; from PodpyatnikUIs import *
+# from W1_1 import *
+# from W1_2 import *; from W2_1 import *
+# from W2_2 import *; from W3_1 import *
+# from W3_2 import *; from W3_3 import *
+# from W3_4 import *; from W4_1 import *
+# from W4_2 import *; from W4_3 import *
+# from W5_1 import *; from W6_1 import *
+# from W6_2 import *; from W9_1 import *
+# from WF_1 import *; from WF_2 import *
+# from WF_3 import *; from WF_4 import *
+# from WF_5 import *; from WF_6 import *
+# from WF_7 import *; from WR_1 import *
+# from WR_2 import *; from WR_3 import *
+# from WR_4 import *; from WF_8 import *
+# from WF_9 import *; from WF_10 import *
+# from WF_11 import *
 from Diag1 import *; from Diag2 import *
 from Diag3 import *; from Diag4 import *
 from Diag5 import *; from Diag6 import *
