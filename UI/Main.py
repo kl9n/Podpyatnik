@@ -26,7 +26,6 @@ from frameerr import *
 from framescreenadv import *
 from racksecscreenadv import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-#import pyscreenshot as ImageGrab
 from PIL import Image, ImageGrab
 
 def get_podpyatnikdict():
@@ -75,21 +74,18 @@ def dictitem_builder(manufacturer,size,type,sizevalues):
             sizedict[size] = typedict
             podpyatnik_dict[manufacturer] = sizedict
 
-def get_podpyatnik_sizes(list):
-    buffer = []
-    for char in list:
-        #если в числе стоит запятая, то берет только первую часть до запятой
-        spchar = char.split(',')
-        char = spchar[0]
-        try:
-            buffer.append(float(char))
-        except:
-            continue
-    buffer.sort()
+def get_podpyatnik_sizes(openedwindow):
+    H = openedwindow.ui.lineEdit_H.text()
+    B = openedwindow.ui.lineEdit_B.text()
+    # если в числе стоит запятая, то берет только первую часть до запятой
+    spchar = H.split(',')
+    H = spchar[0]
+    spchar = B.split(',')
+    B = spchar[0]
     try:
-        x = int(buffer.pop())
-        y = int(buffer.pop())
-        sizes = '{}x{}'.format(x, y)
+        H = int(float(H))
+        B = int(float(B))
+        sizes = '{}x{}'.format(H, B)
         return sizes
     except:
         return 'Без размеров'
@@ -102,9 +98,9 @@ def save_podpyatnik_to_dict(openedwindow):
     else:
         return
     openedwindow.manufacturer = openedwindow.ui.lineEdit_6.text()
-    openedwindow.podpyatniksize = get_podpyatnik_sizes(openedwindow.mainsizevalues)
+    openedwindow.podpyatniksize = get_podpyatnik_sizes(openedwindow)
     openedwindow.podpyatniktype = openedwindow.ui.__class__.__name__
-    sizeforprint = get_podpyatnik_sizes(openedwindow.mainsizevalues)
+    sizeforprint = get_podpyatnik_sizes(openedwindow)
     is_exist = bool
     print('Список размеров - ',openedwindow.mainsizevalues)
     print('Производитель - ',openedwindow.manufacturer)
@@ -266,7 +262,7 @@ class ShowPodpyatnik(QtWidgets.QDialog):
             show_error_window('Не сохранено!', 'Введите название производителя!')
             return
         self.ui.lineEdit_6.setText(self.ui.comboBox.currentText())
-        self.sizeforprint = get_podpyatnik_sizes(self.mainsizevalues)
+        self.sizeforprint = get_podpyatnik_sizes(self)
         filename = self.ui.comboBox.currentText() + ' ' + self.sizeforprint
         i = 2
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
@@ -276,8 +272,6 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt (self):
-            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
-            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
             img = ImageGrab.grab((coordx,coordy,coordx+560, coordy + 560))
             img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
@@ -357,7 +351,7 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
             show_error_window('Не сохранено!', 'Введите название производителя!')
             return
         self.ui.lineEdit_6.setText(self.ui.comboBox.currentText())
-        self.sizeforprint = get_podpyatnik_sizes(self.mainsizevalues)
+        self.sizeforprint = get_podpyatnik_sizes(self)
         filename = self.ui.comboBox.currentText() + ' ' + self.sizeforprint
         i = 2
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
@@ -367,8 +361,6 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt(self):
-            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
-            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
             img = ImageGrab.grab((coordx, coordy, coordx + 560, coordy + 560))
             img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
@@ -421,8 +413,6 @@ class ShowDiagonal(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt(self):
-            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 560, coordy + 560))
-            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
             img = ImageGrab.grab((coordx, coordy, coordx + 560, coordy + 560))
             img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
@@ -624,8 +614,6 @@ class ScrLevWin(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt(self):
-            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 655, coordy + 650))
-            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
             img = ImageGrab.grab((coordx, coordy, coordx + 655, coordy + 650))
             img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 
@@ -773,8 +761,6 @@ class ScrFrWin(QtWidgets.QDialog):
         coordy = self.geometry().y()
 
         def screencapt(self):
-            # screenshot = ImageGrab.grab(bbox=(coordx, coordy, coordx + 640, coordy + 670))
-            # screenshot.save(fp=current_path + '\\' + filename + screenshot_file_extension)
             img = ImageGrab.grab((coordx, coordy, coordx + 640, coordy + 670))
             img.save(current_path + '\\' + filename + screenshot_file_extension, "PNG")
 

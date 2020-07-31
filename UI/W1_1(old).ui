@@ -201,7 +201,7 @@
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="lineEdit_B">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -235,7 +235,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="lineEdit_H">
    <property name="geometry">
     <rect>
      <x>410</x>
