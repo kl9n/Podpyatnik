@@ -264,10 +264,15 @@ class ShowPodpyatnik(QtWidgets.QDialog):
         self.ui.lineEdit_6.setText(self.ui.comboBox.currentText())
         self.sizeforprint = get_podpyatnik_sizes(self)
         filename = self.ui.comboBox.currentText() + ' ' + self.sizeforprint
-        i = 2
+        i = 1
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
-            filename = filename + ' В{}'.format(i)
-            i += 1
+            if i < 2:
+                i += 1
+                filename = filename + ' В{}'.format(i)
+            else:
+                strcount = -2 - len(str(i))
+                i += 1
+                filename = filename[:strcount] + ' В{}'.format(i)
         coordx = self.geometry().x()
         coordy = self.geometry().y()
 
@@ -353,10 +358,15 @@ class ShowSavedPodpyatnik(QtWidgets.QDialog):
         self.ui.lineEdit_6.setText(self.ui.comboBox.currentText())
         self.sizeforprint = get_podpyatnik_sizes(self)
         filename = self.ui.comboBox.currentText() + ' ' + self.sizeforprint
-        i = 2
+        i = 1
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
-            filename = filename + ' В{}'.format(i)
-            i += 1
+            if i < 2:
+                i += 1
+                filename = filename + ' В{}'.format(i)
+            else:
+                strcount = -2 - len(str(i))
+                i += 1
+                filename = filename[:strcount] + ' В{}'.format(i)
         coordx = self.geometry().x()
         coordy = self.geometry().y()
 
@@ -405,10 +415,15 @@ class ShowDiagonal(QtWidgets.QDialog):
             show_error_window('Не сохранено!', 'Введите название производителя!')
             return
         filename = self.ui.lineEdit_6.text()
-        i = 2
+        i = 1
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
-            filename = filename + ' В{}'.format(i)
-            i += 1
+            if i < 2:
+                i += 1
+                filename = filename + ' В{}'.format(i)
+            else:
+                strcount = -2 - len(str(i))
+                i += 1
+                filename = filename[:strcount] + ' В{}'.format(i)
         coordx = self.geometry().x()
         coordy = self.geometry().y()
 
@@ -606,10 +621,15 @@ class ScrLevWin(QtWidgets.QDialog):
             show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
             return
         filename = self.ui.lineEdit.text() + ' ' + levelnum.ui.lineEdit_ln.text() + 'ур ' + self.ui.lineEdit_5.text() + ' ' + self.ui.lineEdit_2.text()
-        i = 2
+        i = 1
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
-            filename = filename + ' ({})'.format(i)
-            i += 1
+            if i < 2:
+                i += 1
+                filename = filename + ' ({})'.format(i)
+            else:
+                strcount = -3 - len(str(i))
+                i += 1
+                filename = filename[:strcount] + ' ({})'.format(i)
         coordx = self.geometry().x()
         coordy = self.geometry().y()
 
@@ -753,10 +773,15 @@ class ScrFrWin(QtWidgets.QDialog):
             show_error_window('Не сохранено!', 'Введите хотя бы название производителя!')
             return
         filename = self.ui.lineEdit.text() + ' ' + self.ui.lineEdit_frame.text() + ' ' + self.ui.lineEdit_variant.text()
-        i = 2
+        i = 1
         while path.isfile(current_path + '\\' + filename + screenshot_file_extension):
-            filename = filename + ' ({})'.format(i)
-            i += 1
+            if i < 2:
+                i += 1
+                filename = filename + ' ({})'.format(i)
+            else:
+                strcount = -3 - len(str(i))
+                i += 1
+                filename = filename[:strcount] + ' ({})'.format(i)
         coordx = self.geometry().x()
         coordy = self.geometry().y()
 
